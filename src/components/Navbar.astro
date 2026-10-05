@@ -1,0 +1,351 @@
+---
+import ThemeToggle from './ThemeToggle.astro';
+
+const navLinks = [
+  { href: '#home', label: 'Home' },
+  { href: '#work', label: 'Work' },
+  { href: '#about', label: 'About' },
+  { href: '#skills', label: 'Skills' },
+  { href: '#experience', label: 'Experience' },
+  { href: '#education', label: 'Education' },
+  { href: '#contact', label: 'Contact' },
+];
+---
+
+<header class="navbar-wrapper">
+  <nav class="glass navbar-pill" aria-label="Main navigation">
+    <div class="navbar-left">
+      <a href="#home" class="brand-name">MZ</a>
+    </div>
+
+    <ul class="nav-links desktop-only" role="list">
+      {navLinks.map((link) => (
+        <li>
+          <a href={link.href} class="nav-link" data-nav-link>
+            {link.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <div class="navbar-right">
+      <ThemeToggle />
+      <button
+        type="button"
+        id="mobile-menu-btn"
+        class="glass mobile-menu-btn mobile-only"
+        aria-label="Open menu"
+        aria-expanded="false"
+        aria-controls="mobile-nav-sheet"
+      >
+        <!-- Hamburger icon -->
+        <svg
+          class="menu-icon hamburger"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <line x1="4" y1="7" x2="20" y2="7"></line>
+          <line x1="4" y1="12" x2="20" y2="12"></line>
+          <line x1="4" y1="17" x2="20" y2="17"></line>
+        </svg>
+        <!-- Close icon -->
+        <svg
+          class="menu-icon close-x"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Glass Sheet -->
+  <div
+    id="mobile-nav-sheet"
+    class="glass mobile-sheet mobile-only"
+    hidden
+    aria-label="Mobile navigation"
+  >
+    <ul class="mobile-nav-links" role="list">
+      {navLinks.map((link) => (
+        <li>
+          <a href={link.href} class="mobile-nav-link" data-nav-link>
+            {link.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</header>
+
+<style>
+  .navbar-wrapper {
+    position: fixed;
+    top: calc(16px + env(safe-area-inset-top, 0px));
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 16px;
+    pointer-events: none;
+  }
+
+  .navbar-pill {
+    pointer-events: auto;
+    width: 100%;
+    max-width: 760px;
+    height: 56px;
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 12px 0 20px;
+  }
+
+  .navbar-left {
+    display: flex;
+    align-items: center;
+  }
+
+  .brand-name {
+    font-size: var(--font-size-body);
+    font-weight: 700;
+    color: var(--text);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+  }
+
+  .brand-name:hover {
+    text-decoration: none;
+    opacity: 0.85;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-link {
+    font-size: var(--font-size-small);
+    font-weight: 500;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 150ms ease;
+    padding: 6px 4px;
+  }
+
+  .nav-link:hover {
+    color: var(--text);
+    text-decoration: none;
+  }
+
+  .nav-link.is-active {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  .navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .mobile-menu-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--text);
+    padding: 0;
+    border: none;
+    transition: opacity 150ms ease;
+  }
+
+  .mobile-menu-btn:hover {
+    opacity: 0.85;
+  }
+
+  .mobile-menu-btn .close-x {
+    display: none;
+  }
+
+  .mobile-menu-btn[aria-expanded="true"] .hamburger {
+    display: none;
+  }
+
+  .mobile-menu-btn[aria-expanded="true"] .close-x {
+    display: block;
+  }
+
+  /* Mobile Sheet */
+  .mobile-sheet {
+    pointer-events: auto;
+    width: 100%;
+    max-width: 760px;
+    margin-top: 10px;
+    border-radius: 20px;
+    padding: 16px 20px;
+  }
+
+  .mobile-sheet[hidden] {
+    display: none;
+  }
+
+  .mobile-nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .mobile-nav-link {
+    display: block;
+    padding: 12px 16px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    font-size: var(--font-size-body);
+    font-weight: 500;
+    color: var(--text-muted);
+    text-decoration: none;
+    border-radius: 12px;
+    transition: color 150ms ease;
+  }
+
+  .mobile-nav-link:hover,
+  .mobile-nav-link.is-active {
+    color: var(--text);
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  /* Responsive visibility */
+  .mobile-only {
+    display: none;
+  }
+
+  .desktop-only {
+    display: flex;
+  }
+
+  @media (max-width: 639px) {
+    .mobile-only {
+      display: inline-flex;
+    }
+    .mobile-sheet.mobile-only:not([hidden]) {
+      display: block;
+    }
+    .desktop-only {
+      display: none;
+    }
+    .navbar-pill {
+      padding: 0 8px 0 16px;
+    }
+  }
+</style>
+
+<script>
+  function setupNavbar() {
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const sheet = document.getElementById('mobile-nav-sheet');
+    const links = document.querySelectorAll<HTMLAnchorElement>('[data-nav-link]');
+
+    function toggleMenu(open?: boolean) {
+      if (!menuBtn || !sheet) return;
+      const isOpen = open !== undefined ? open : menuBtn.getAttribute('aria-expanded') === 'true';
+      const nextState = !isOpen;
+      menuBtn.setAttribute('aria-expanded', nextState ? 'true' : 'false');
+      menuBtn.setAttribute('aria-label', nextState ? 'Close menu' : 'Open menu');
+      if (nextState) {
+        sheet.removeAttribute('hidden');
+      } else {
+        sheet.setAttribute('hidden', '');
+      }
+    }
+
+    if (menuBtn && sheet) {
+      menuBtn.addEventListener('click', () => toggleMenu());
+
+      // Close when clicking any link
+      links.forEach((link) => {
+        link.addEventListener('click', () => {
+          if (window.innerWidth < 640) {
+            toggleMenu(false);
+          }
+        });
+      });
+
+      // Close on escape key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && menuBtn.getAttribute('aria-expanded') === 'true') {
+          toggleMenu(false);
+        }
+      });
+    }
+
+    // Active link highlighting via IntersectionObserver
+    const sections = document.querySelectorAll<HTMLElement>('section[id], header[id], div[id]');
+    const sectionIds = Array.from(links)
+      .map((l) => l.getAttribute('href')?.replace('#', ''))
+      .filter(Boolean) as string[];
+
+    const observedSections = Array.from(sections).filter((sec) => sectionIds.includes(sec.id));
+
+    if (observedSections.length > 0) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const id = entry.target.id;
+              links.forEach((link) => {
+                const href = link.getAttribute('href');
+                if (href === `#${id}`) {
+                  link.classList.add('is-active');
+                } else if (href?.startsWith('#')) {
+                  link.classList.remove('is-active');
+                }
+              });
+            }
+          });
+        },
+        {
+          rootMargin: '-20% 0px -60% 0px',
+          threshold: 0,
+        }
+      );
+
+      observedSections.forEach((sec) => observer.observe(sec));
+    }
+  }
+
+  setupNavbar();
+  document.addEventListener('astro:after-swap', setupNavbar);
+</script>

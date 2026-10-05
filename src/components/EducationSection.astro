@@ -1,0 +1,195 @@
+---
+// Education / study journey – formal qualifications and courses.
+// Courses section is a placeholder; owner to supply additional items.
+const formal = [
+  {
+    title: "Intermediate in Computer Science (ICS)",
+    place: "Govt. M.C. Higher Secondary School, G.M. Abad",
+    period: "April 2024 — September 2026",
+    location: "Faisalabad, Pakistan",
+  },
+  {
+    title: "Matriculation",
+    place: "Hassan Bin Sabit High School",
+    period: "2021 — 2023",
+    location: "Faisalabad, Pakistan",
+  },
+  {
+    title: "Hifz-ul-Quran",
+    place: "Al-Rehman Islamic Center",
+    period: "2017 — 2020",
+    location: null,
+  },
+];
+
+// Courses and certificates – owner to confirm and expand this list.
+// TODO: add any other courses or certificates here.
+const courses = [
+  {
+    title: "AI and Data Science",
+    place: "Saylani Mass IT Training (SMIT)",
+    period: "November 2025 — November 2026",
+  },
+  {
+    title: "Digital Marketing",
+    place: "SDI Welfare",
+    period: "August 2026 — October 2026",
+  },
+  {
+    title: "Web Development",
+    place: "Self-learning",
+    period: null,
+  },
+  {
+    title: "Introduction to Artificial Intelligence",
+    place: "Cisco Networking Academy",
+    period: null,
+    note: "Online",
+  },
+];
+---
+
+<section id="education" aria-labelledby="education-heading">
+  <div class="site-container">
+    <h2 id="education-heading" class="education-heading">Study journey</h2>
+
+    <div class="edu-block">
+      <h3 class="block-label">Formal education</h3>
+      <ol class="edu-list" role="list">
+        {formal.map((item) => (
+          <li class="edu-entry">
+            <div class="edu-marker" aria-hidden="true"></div>
+            <div class="edu-body">
+              <p class="edu-title">{item.title}</p>
+              <p class="edu-place">{item.place}</p>
+              <p class="edu-meta">
+                {item.period}
+                {item.location && <> · {item.location}</>}
+              </p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+
+    <div class="edu-block">
+      <h3 class="block-label">Courses and certificates</h3>
+      <ol class="edu-list" role="list">
+        {courses.map((item) => (
+          <li class="edu-entry">
+            <div class="edu-marker" aria-hidden="true"></div>
+            <div class="edu-body">
+              <p class="edu-title">{item.title}</p>
+              <p class="edu-place">{item.place}</p>
+              {(item.period || item.note) && (
+                <p class="edu-meta">
+                  {item.period}
+                  {item.period && item.note && <> · </>}
+                  {item.note}
+                </p>
+              )}
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </div>
+</section>
+
+<style>
+  #education {
+    padding-top: var(--section-py);
+    padding-bottom: var(--section-py);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .education-heading {
+    margin-bottom: var(--space-48);
+  }
+
+  .edu-block {
+    margin-bottom: var(--space-48);
+  }
+
+  .edu-block:last-child {
+    margin-bottom: 0;
+  }
+
+  .block-label {
+    font-size: var(--font-size-small);
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: none;
+    letter-spacing: 0;
+    margin-bottom: var(--space-24);
+  }
+
+  .edu-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+  }
+
+  .edu-list::before {
+    content: "";
+    position: absolute;
+    top: 8px;
+    bottom: 8px;
+    left: 7px;
+    width: 1px;
+    background-color: var(--border);
+  }
+
+  .edu-entry {
+    display: flex;
+    gap: var(--space-24);
+    position: relative;
+    padding-bottom: 32px;
+  }
+
+  .edu-entry:last-child {
+    padding-bottom: 0;
+  }
+
+  .edu-marker {
+    flex-shrink: 0;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    border: 2px solid var(--border);
+    background-color: var(--bg);
+    margin-top: 3px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .edu-body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .edu-title {
+    font-size: var(--font-size-body);
+    font-weight: 600;
+    color: var(--text);
+    margin: 0;
+    max-width: none;
+  }
+
+  .edu-place {
+    font-size: var(--font-size-body);
+    color: var(--text-muted);
+    margin: 0;
+    max-width: none;
+  }
+
+  .edu-meta {
+    font-size: var(--font-size-small);
+    color: var(--text-muted);
+    font-weight: 500;
+    margin: 0;
+    max-width: none;
+  }
+</style>

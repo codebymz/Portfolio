@@ -1,0 +1,43 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import WorkSection from '../components/WorkSection.astro';
+import AboutSection from '../components/AboutSection.astro';
+import SkillsSection from '../components/SkillsSection.astro';
+import ExperienceSection from '../components/ExperienceSection.astro';
+import EducationSection from '../components/EducationSection.astro';
+import ContactSection from '../components/ContactSection.astro';
+
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Muhammad Zain Ul Abdin',
+  jobTitle: 'Full-Stack Developer',
+  url: 'https://mzainulabdin.xyz',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Faisalabad',
+    addressRegion: 'Punjab',
+    addressCountry: 'PK',
+  },
+  sameAs: [
+    'https://www.linkedin.com/in/devmzainulabdin',
+    'https://github.com/codebymz',
+  ],
+};
+---
+
+<BaseLayout
+  title="Muhammad Zain Ul Abdin | AI-driven full-stack developer"
+  description="Full-stack developer from Faisalabad, Pakistan. I build web apps and AI tools with Next.js, React and FastAPI."
+  canonical="https://mzainulabdin.xyz/"
+  jsonLd={personSchema}
+>
+  <Hero />
+  <WorkSection />
+  <AboutSection />
+  <SkillsSection />
+  <ExperienceSection />
+  <EducationSection />
+  <ContactSection />
+</BaseLayout>

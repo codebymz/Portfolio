@@ -1,0 +1,245 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { featuredProjects, type FeaturedProject } from '../../data/projects';
+
+export function getStaticPaths() {
+  return featuredProjects.map((project) => ({
+    params: { slug: project.slug },
+    props: { project },
+  }));
+}
+
+interface Props {
+  project: FeaturedProject;
+}
+
+const { project } = Astro.props;
+
+const pageTitle = `${project.title} | Muhammad Zain Ul Abdin`;
+const pageDescription = project.summary;
+const pageCanonical = `https://mzainulabdin.xyz/projects/${project.slug}`;
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  canonical={pageCanonical}
+>
+  <div class="site-container project-detail-container">
+    <!-- Back to Work Navigation -->
+    <nav class="back-nav" aria-label="Back navigation">
+      <a href="/#work" class="link-accent back-link">
+        ← Back to Work
+      </a>
+    </nav>
+
+    <!-- Project Header -->
+    <header class="project-header">
+      <h1 class="project-title">{project.title}</h1>
+      <p class="project-summary">{project.summary}</p>
+    </header>
+
+    <!-- Screenshot Area (Placeholder when TODO) -->
+    <section class="project-media" aria-label="Project screenshot">
+      <div class="screenshot-placeholder" aria-label={`${project.title} screenshot placeholder`}>
+        <span class="placeholder-title">{project.title}</span>
+        <span class="placeholder-label">Screenshot (TODO: owner supplies real screenshot)</span>
+      </div>
+    </section>
+
+    <!-- What it does Section -->
+    <section class="detail-section" aria-label="What it does">
+      <h2 class="detail-heading">What it does</h2>
+      <ul class="feature-list" role="list">
+        {project.whatItDoes.map((item) => (
+          <li class="feature-item">{item}</li>
+        ))}
+      </ul>
+    </section>
+
+    <!-- Technologies Section -->
+    <section class="detail-section" aria-label="Technologies used">
+      <h2 class="detail-heading">Technologies</h2>
+      <div class="tag-group">
+        {Array.isArray(project.stack) ? (
+          project.stack.map((tech) => <span class="tag">{tech}</span>)
+        ) : (
+          <span class="tag tag-todo">Stack: TODO</span>
+        )}
+      </div>
+    </section>
+
+    <!-- Project Links -->
+    <section class="detail-section links-section" aria-label="Project links">
+      <h2 class="detail-heading">Links</h2>
+      <div class="action-links">
+        {project.liveUrl && (
+          <a
+            href={project.liveUrl}
+            class="link-accent"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Open live site
+          </a>
+        )}
+        {project.isComingSoon && (
+          <span class="status-label">Coming soon</span>
+        )}
+
+        {project.githubUrl && (
+          <a
+            href={project.githubUrl}
+            class="link-accent"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            View on GitHub
+          </a>
+        )}
+        {project.isPrivateRepo && (
+          <span class="status-label">Private repository</span>
+        )}
+      </div>
+    </section>
+
+    <!-- Bottom Back Link -->
+    <div class="bottom-nav">
+      <a href="/#work" class="link-accent back-link">
+        ← Back to Work
+      </a>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .project-detail-container {
+    max-width: var(--container-max-w);
+    padding-top: var(--space-48);
+    padding-bottom: var(--space-96);
+  }
+
+  .back-nav {
+    margin-bottom: var(--space-32);
+  }
+
+  .back-link {
+    font-size: var(--font-size-small);
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .project-header {
+    margin-bottom: var(--space-48);
+    max-width: var(--text-column-max-w);
+  }
+
+  .project-title {
+    font-size: var(--font-size-display);
+    font-weight: 700;
+    line-height: var(--line-height-display);
+    letter-spacing: var(--letter-spacing-display);
+    color: var(--text);
+    margin: 0 0 var(--space-16) 0;
+  }
+
+  .project-summary {
+    font-size: var(--font-size-body);
+    line-height: var(--line-height-body);
+    color: var(--text-muted);
+    margin: 0;
+    max-width: 65ch;
+  }
+
+  /* Screenshot */
+  .project-media {
+    margin-bottom: var(--space-64);
+  }
+
+  .screenshot-placeholder {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    min-height: 280px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-media);
+    background-color: var(--surface);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-8);
+    padding: var(--space-32);
+    text-align: center;
+  }
+
+  .placeholder-title {
+    font-size: var(--font-size-body);
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .placeholder-label {
+    font-size: var(--font-size-small);
+    color: var(--text-muted);
+  }
+
+  /* Detail Sections */
+  .detail-section {
+    margin-bottom: var(--space-48);
+    max-width: var(--text-column-max-w);
+  }
+
+  .detail-heading {
+    font-size: var(--font-size-h3);
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: var(--space-16);
+  }
+
+  .feature-list {
+    margin: 0;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+  }
+
+  .feature-item {
+    font-size: var(--font-size-body);
+    line-height: var(--line-height-body);
+    color: var(--text);
+    max-width: 65ch;
+  }
+
+  .tag-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-8);
+  }
+
+  .tag-todo {
+    border-style: dashed;
+    color: var(--text-muted);
+  }
+
+  .action-links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-24);
+  }
+
+  .status-label {
+    font-size: var(--font-size-small);
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+
+  .bottom-nav {
+    margin-top: var(--space-64);
+    padding-top: var(--space-32);
+    border-top: 1px solid var(--border);
+  }
+</style>

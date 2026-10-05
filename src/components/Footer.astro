@@ -1,0 +1,154 @@
+---
+// Footer component following prd.md section 5 and design.md
+const navLinks = [
+  { href: '#home', label: 'Home' },
+  { href: '#work', label: 'Work' },
+  { href: '#about', label: 'About' },
+  { href: '#skills', label: 'Skills' },
+  { href: '#experience', label: 'Experience' },
+  { href: '#contact', label: 'Contact' },
+];
+
+const externalLinks = [
+  { href: 'https://github.com/codebymz', label: 'GitHub' },
+  { href: 'https://www.linkedin.com/in/devmzainulabdin', label: 'LinkedIn' },
+  { href: 'mailto:hz880710@gmail.com', label: 'Email' },
+];
+
+const currentYear = 2026;
+---
+
+<footer class="site-footer" role="contentinfo">
+  <div class="site-container footer-container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <p class="footer-name">Muhammad Zain Ul Abdin</p>
+        <p class="footer-role">AI-driven full-stack developer</p>
+      </div>
+
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <ul class="footer-links" role="list">
+          {navLinks.map((link) => (
+            <li>
+              <a href={link.href} class="footer-link">
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+
+        <ul class="footer-links external-links" role="list">
+          {externalLinks.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                class="footer-link"
+                target={link.href.startsWith('mailto:') ? undefined : '_blank'}
+                rel={link.href.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copyright">
+        © {currentYear} Muhammad Zain Ul Abdin. All rights reserved.
+      </p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    border-top: 1px solid var(--border);
+    padding-top: 48px;
+    padding-bottom: 48px;
+    margin-top: 96px;
+    background-color: var(--bg);
+  }
+
+  .footer-container {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .footer-top {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    justify-content: space-between;
+  }
+
+  @media (min-width: 640px) {
+    .footer-top {
+      flex-direction: row;
+      align-items: flex-start;
+    }
+  }
+
+  .footer-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .footer-name {
+    font-size: var(--font-size-body);
+    font-weight: 700;
+    color: var(--text);
+    margin: 0;
+  }
+
+  .footer-role {
+    font-size: var(--font-size-small);
+    color: var(--text-muted);
+    margin: 0;
+  }
+
+  .footer-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+  }
+
+  .footer-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .footer-link {
+    font-size: var(--font-size-small);
+    font-weight: 500;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 150ms ease;
+    display: inline-flex;
+    align-items: center;
+    min-height: 24px;
+  }
+
+  .footer-link:hover {
+    color: var(--text);
+    text-decoration: none;
+  }
+
+  .footer-bottom {
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+  }
+
+  .footer-copyright {
+    font-size: var(--font-size-small);
+    color: var(--text-muted);
+    margin: 0;
+  }
+</style>

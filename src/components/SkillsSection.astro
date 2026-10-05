@@ -1,0 +1,103 @@
+---
+const skillGroups = [
+  {
+    label: "Frontend",
+    skills: ["React", "Next.js", "TypeScript", "JavaScript", "HTML", "CSS", "Tailwind CSS"],
+  },
+  {
+    label: "Backend",
+    skills: ["Python", "FastAPI", "REST APIs", "SQLAlchemy", "SQL"],
+  },
+  {
+    label: "Database and vector",
+    skills: ["Neon (PostgreSQL)", "Pinecone"],
+  },
+  {
+    label: "AI",
+    skills: ["RAG", "Embeddings", "Gemini API", "Groq API"],
+  },
+  {
+    label: "Automation",
+    skills: ["n8n"],
+  },
+  {
+    label: "Tools",
+    skills: ["Git", "GitHub", "Vercel", "Clerk"],
+  },
+  {
+    label: "AI tools",
+    skills: ["Claude", "Antigravity IDE"],
+  },
+];
+---
+
+<section id="skills" aria-labelledby="skills-heading">
+  <div class="site-container">
+    <h2 id="skills-heading" class="skills-heading">Skills</h2>
+    <div class="skill-groups">
+      {skillGroups.map((group) => (
+        <div class="skill-group">
+          <h3 class="group-label">{group.label}</h3>
+          <ul class="tag-list" role="list">
+            {group.skills.map((skill) => (
+              <li class="tag">{skill}</li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  #skills {
+    padding-top: var(--section-py);
+    padding-bottom: var(--section-py);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .skills-heading {
+    margin-bottom: var(--space-48);
+  }
+
+  .skill-groups {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-32);
+  }
+
+  .skill-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-12);
+  }
+
+  @media (min-width: 640px) {
+    .skill-group {
+      flex-direction: row;
+      align-items: baseline;
+      gap: var(--space-24);
+    }
+  }
+
+  .group-label {
+    font-size: var(--font-size-small);
+    font-weight: 600;
+    color: var(--text-muted);
+    line-height: var(--line-height-small);
+    letter-spacing: 0;
+    white-space: nowrap;
+    flex-shrink: 0;
+    min-width: 160px;
+    margin: 0;
+  }
+
+  .tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-8);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+</style>

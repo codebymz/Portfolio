@@ -1,0 +1,323 @@
+---
+// Work section component following design.md section 6 and data.md section 5
+import { featuredProjects, otherProjects } from '../data/projects';
+---
+
+<section id="work" class="work-section" aria-label="Work">
+  <div class="site-container">
+    <div class="section-header">
+      <h2 class="text-h2">Work</h2>
+      <p class="section-desc">Featured projects and selected work.</p>
+    </div>
+
+    <!-- Featured Projects Rows -->
+    <div class="featured-list" role="list">
+      {featuredProjects.map((project) => (
+        <article class="project-row" role="listitem">
+          <!-- Screenshot or Placeholder box (7 cols desktop) -->
+          <div class="screenshot-col">
+            <div class="screenshot-placeholder" aria-label={`${project.title} screenshot placeholder`}>
+              <span class="placeholder-title">{project.title}</span>
+              <span class="placeholder-label">Screenshot (TODO)</span>
+            </div>
+          </div>
+
+          <!-- Text Details (5 cols desktop) -->
+          <div class="text-col">
+            <h3 class="text-h3 project-title">
+              <a href={`/projects/${project.slug}`} class="project-title-link">
+                {project.title}
+              </a>
+            </h3>
+
+            <p class="project-summary">{project.summary}</p>
+
+            <div class="tag-group" aria-label="Technologies used">
+              {Array.isArray(project.stack) ? (
+                project.stack.map((tech) => <span class="tag">{tech}</span>)
+              ) : (
+                <span class="tag tag-todo">Stack: TODO</span>
+              )}
+            </div>
+
+            <div class="project-links">
+              {project.liveUrl && (
+                <a
+                  href={project.liveUrl}
+                  class="btn btn-primary"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Open live site
+                </a>
+              )}
+              {project.isComingSoon && (
+                <span class="status-label">Coming soon</span>
+              )}
+
+              {project.githubUrl && (
+                <a
+                  href={project.githubUrl}
+                  class="btn btn-secondary glass"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  View on GitHub
+                </a>
+              )}
+              {project.isPrivateRepo && (
+                <span class="status-label">Private repository</span>
+              )}
+
+              <a href={`/projects/${project.slug}`} class="btn btn-secondary glass">
+                View details
+              </a>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <!-- Other Projects Section -->
+    <div class="other-projects-section">
+      <h3 class="other-projects-heading">Other projects</h3>
+
+      <div class="other-projects-list" role="list">
+        {otherProjects.map((project) => (
+          <article class="other-project-item" role="listitem">
+            <div class="other-project-main">
+              <div class="other-project-title-row">
+                <span class="other-project-name">{project.name}</span>
+                <div class="tag-group">
+                  {Array.isArray(project.stack) ? (
+                    project.stack.map((tech) => <span class="tag">{tech}</span>)
+                  ) : (
+                    <span class="tag tag-todo">Stack: TODO</span>
+                  )}
+                </div>
+              </div>
+              <p class="other-project-desc">{project.description}</p>
+            </div>
+
+            <div class="other-project-links">
+              {project.liveUrl && (
+                <a
+                  href={project.liveUrl}
+                  class="btn btn-primary"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Open live site
+                </a>
+              )}
+              {project.githubUrl && (
+                <a
+                  href={project.githubUrl}
+                  class="btn btn-secondary glass"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  View on GitHub
+                </a>
+              )}
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .work-section {
+    padding-top: var(--section-py);
+    padding-bottom: var(--section-py);
+  }
+
+  .section-header {
+    margin-bottom: var(--space-48);
+  }
+
+  .section-desc {
+    color: var(--text-muted);
+    font-size: var(--font-size-body);
+    margin-top: var(--space-8);
+  }
+
+  /* Featured project rows: 12-column grid desktop (7 cols screenshot, 5 cols text) */
+  .featured-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-96);
+  }
+
+  .project-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-32);
+    align-items: center;
+  }
+
+  @media (min-width: 1024px) {
+    .project-row {
+      grid-template-columns: 7fr 5fr;
+      gap: var(--space-48);
+    }
+  }
+
+  /* Screenshot placeholder (radius 20px, 1px border, no fake mockup) */
+  .screenshot-col {
+    width: 100%;
+  }
+
+  .screenshot-placeholder {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    min-height: 220px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-media);
+    background-color: var(--surface);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-8);
+    padding: var(--space-24);
+    text-align: center;
+  }
+
+  .placeholder-title {
+    font-size: var(--font-size-body);
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .placeholder-label {
+    font-size: var(--font-size-small);
+    color: var(--text-muted);
+  }
+
+  /* Text details */
+  .text-col {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-16);
+    align-items: flex-start;
+  }
+
+  .project-title {
+    margin: 0;
+  }
+
+  .project-title-link {
+    color: var(--text);
+    text-decoration: none;
+    transition: color 150ms ease;
+  }
+
+  .project-title-link:hover {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .project-summary {
+    color: var(--text-muted);
+    margin: 0;
+    line-height: var(--line-height-body);
+  }
+
+  .tag-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-8);
+  }
+
+  .tag-todo {
+    border-style: dashed;
+    color: var(--text-muted);
+  }
+
+  .project-links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-12);
+    margin-top: var(--space-8);
+  }
+
+  /* Other projects: plain list, no cards */
+  .other-projects-section {
+    margin-top: var(--space-96);
+    padding-top: var(--space-48);
+    border-top: 1px solid var(--border);
+  }
+
+  .other-projects-heading {
+    font-size: var(--font-size-h3);
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: var(--space-24);
+  }
+
+  .other-projects-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-24);
+  }
+
+  .other-project-item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-12);
+    padding-bottom: var(--space-24);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .other-project-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  @media (min-width: 640px) {
+    .other-project-item {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: var(--space-24);
+    }
+  }
+
+  .other-project-main {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+  }
+
+  .other-project-title-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-12);
+  }
+
+  .other-project-name {
+    font-size: var(--font-size-body);
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .other-project-desc {
+    font-size: var(--font-size-small);
+    color: var(--text-muted);
+    margin: 0;
+    max-width: 60ch;
+  }
+
+  .other-project-links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-16);
+    flex-shrink: 0;
+  }
+</style>

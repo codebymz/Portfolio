@@ -1,0 +1,153 @@
+---
+import '../styles/global.css';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+  ogImage?: string;
+  jsonLd?: object | null;
+}
+
+const {
+  title = 'Muhammad Zain Ul Abdin | AI-driven full-stack developer',
+  description = 'Full-stack developer from Faisalabad, Pakistan. I build web apps and AI tools with Next.js, React and FastAPI.',
+  canonical = 'https://mzainulabdin.xyz/',
+  ogImage = 'https://mzainulabdin.xyz/og.jpg',
+  jsonLd = null,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+
+    <!-- Preload primary Manrope file to avoid FOUT -->
+    <link
+      rel="preload"
+      href="/fonts/manrope-latin-400-normal.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin="anonymous"
+    />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonical} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- Theme color meta -->
+    <meta name="theme-color" content="#F2F2F7" id="meta-theme-color" />
+
+    <!-- No-flash theme initialization script -->
+    <script is:inline>
+      (function () {
+        try {
+          const stored = localStorage.getItem('theme');
+          const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          const theme = stored ? stored : prefersDark ? 'dark' : 'light';
+          document.documentElement.setAttribute('data-theme', theme);
+          const meta = document.getElementById('meta-theme-color');
+          if (meta) {
+            meta.setAttribute('content', theme === 'dark' ? '#000000' : '#F2F2F7');
+          }
+        } catch (e) {}
+      })();
+    </script>
+
+    <!-- JSON-LD structured data -->
+    {jsonLd && (
+      <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    )}
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">Skip to content</a>
+    <Navbar />
+    <main id="main-content" tabindex="-1">
+      <slot />
+    </main>
+    <Footer />
+
+    <script>
+      // Scroll reveal motion following design.md section 9
+      // Applied ONLY to: project rows (.project-row), About text (.about-body), and Experience timeline (.timeline).
+      // The hidden state is applied ONLY by JavaScript so content remains visible if JS fails.
+      function setupScrollReveal() {
+        if (typeof window === 'undefined') return;
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        if (!('IntersectionObserver' in window)) return;
+
+        const targets = document.querySelectorAll<HTMLElement>(
+          '.project-row, .about-body, .timeline'
+        );
+        if (!targets.length) return;
+
+        const observer = new IntersectionObserver(
+          (entries, obs) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-revealed');
+                obs.unobserve(entry.target);
+              }
+            });
+          },
+          {
+            threshold: 0.1,
+          }
+        );
+
+        targets.forEach((target) => {
+          if (!target.classList.contains('is-revealed')) {
+            target.classList.add('reveal-block');
+            observer.observe(target);
+          }
+        });
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', setupScrollReveal);
+      } else {
+        setupScrollReveal();
+      }
+      document.addEventListener('astro:after-swap', setupScrollReveal);
+
+      window
+        .matchMedia('(prefers-reduced-motion: reduce)')
+        .addEventListener('change', (e) => {
+          if (e.matches) {
+            document.querySelectorAll('.reveal-block').forEach((el) => {
+              el.classList.add('is-revealed');
+            });
+          }
+        });
+    </script>
+  </body>
+</html>
+
+<style>
+  main {
+    outline: none;
+    padding-top: calc(88px + env(safe-area-inset-top, 0px));
+  }
+</style>

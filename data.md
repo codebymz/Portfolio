@@ -1,164 +1,162 @@
-# Personal Portfolio Data Backup
+# Content and data: MZAINULABDIN.xyz
 
-> Yeh file project ke saare data (Personal Info, Skills, Education, Projects, Social Links wagera) ka mukammal backup hai.
+Last updated: 2026-10-04
+Read `prd.md` first. This is the only source for text, links and facts on the site. When you change anything here, add an entry to `CHANGELOG.md`.
 
----
-
-## 👤 1. Personal Information (Zaati Maloomat)
-
-- **Full Name:** Muhammad Zain-ul-Abdin
-- **Portfolio Brand / Monogram:** MZ
-- **Company / Agency Platform:** MZ NEXORA ([mznexora.vercel.app](https://mznexora.vercel.app))
-- **Role:** Full-Stack AI Engineer
-- **Tagline / Pitch:** I build modern web applications, AI agents, RAG systems, and workflow automations.
-- **Location:** Faisalabad, Pakistan 🇵🇰
-- **Availability:** Available for internships & freelance work
-- **Motto / Quote:** *"Ship it. Iterate. Level up."*
-
-### 📝 Bio / About Me:
-- **Short Intro:** Full-Stack AI Engineer building modern web applications, AI agents, RAG systems, and workflow automations. Founder of MZ NEXORA and AI & Data Science student at SMIT (Saylani Mass IT Training) in Faisalabad.
-- **Description:** Shipped real-world projects — Paper GenAI, MZ NEXORA Platform, Cloud Student Portal, Speed Lab, and QR Menu System.
-- **Typing Roles / Titles:**
-  - Full-Stack AI Engineer
-  - AI Agents & RAG Systems Builder
-  - Modern Web Applications Developer
-  - Workflow Automations Specialist
-  - FastAPI & Next.js Architect
+Do not add facts that are not in this file. If something is missing, add it to "Open items" at the bottom.
 
 ---
 
-## 📞 2. Contact & Social Links (Rabta aur Social Links)
+## 1. Identity
 
-| Platform | Details / URL |
-| :--- | :--- |
-| **Email** | [zzawar521@gmail.com](mailto:zzawar521@gmail.com) |
-| **WhatsApp / Phone** | [+92 326 9656457](https://wa.me/923269656457) |
-| **GitHub** | [github.com/zaini12121](https://github.com/zaini12121) |
-| **LinkedIn** | [linkedin.com/in/zain-ul-abdin-281985378](https://www.linkedin.com/in/zain-ul-abdin-281985378) |
-| **Instagram** | [@mz.dev2026](https://instagram.com/mz.dev2026) |
-| **Company Website** | [mznexora.vercel.app](https://mznexora.vercel.app) |
-| **Portfolio Website** | [zainulabdin-project.vercel.app](https://zainulabdin-project.vercel.app) |
+- Full name: Muhammad Zain Ul Abdin
+- Short name (navbar): MZ
+- Role line: AI-driven full-stack developer
+- Location: Faisalabad, Punjab, Pakistan
+- Domain: mzainulabdin.xyz
+- Open to: internships, freelance work, remote roles
 
----
+## 2. Contact
 
-## 🎓 3. Education & Certifications (Taleem aur Asnaad)
+- Email: hz880710@gmail.com (use as `mailto:`)
+- LinkedIn: https://www.linkedin.com/in/devmzainulabdin
+- GitHub: https://github.com/codebymz
+- Phone: not published
 
-### 1. AI & Data Science (2025 — Present)
-- **Institute:** SMIT — Saylani Mass IT Training, Faisalabad
-- **Details:** Studying Python, machine learning, data analysis, and practical AI applications.
+## 3. Home
 
-### 2. Introduction to Modern AI (2025)
-- **Institute / Platform:** Cisco Networking Academy (Online)
-- **Details:** Certification course covering fundamentals of modern AI and its real-world use cases.
+- Heading (h1): Muhammad Zain Ul Abdin
+- Role line: AI-driven full-stack developer
+- Sentence: I build web apps and AI tools with Next.js, React and FastAPI.
+- Buttons: "View my work" (primary, goes to `#work`), "Contact me" (secondary, goes to `#contact`)
 
-### 3. Intermediate in Computer Science (ICS) — Completed / In Progress
-- **Institute:** M.C. Model Higher Secondary School · Faisalabad Board
-- **Details:** Intermediate in Computer Science, building a strong foundation in CS fundamentals.
+## 4. About
 
-### 4. Web Development (Self-Taught) (2024 — Present)
-- **Platform:** Online resources & personal projects
-- **Details:** Shipped a Student Portal, QR Menu System, Paper GenAI, and personal portfolios using Python, JS, and Neon DB.
+Draft for the owner to review. Keep only what is true.
 
-### 5. Matriculation (SSC) — Completed
-- **Institute:** Hassan Bin Sabit High School · Faisalabad Board
-- **Details:** Secondary School Certificate — completed successfully.
+> I'm Zain, a full-stack developer from Faisalabad, Pakistan. I build web apps with Next.js, React and FastAPI, and I use AI tools to work faster while I handle the design, architecture and debugging myself.
+>
+> So far I've built a school management portal, an AI paper generator for students, a QR ordering system for a restaurant, and a few tools of my own. I also run MZ Nexora, a small digital agency, and I'm studying AI and Data Science at SMIT.
+>
+> I'm open to internships, freelance work and remote roles.
 
----
+## 5. Projects
 
-## 💻 4. Skills & Tech Stack (Maharat aur Tools)
+Featured order: Paper GenAI, HBS Admin Portal, Spice Garden, ZAPR. Then the two entries in "Other projects".
 
-| Category | Skills |
-| :--- | :--- |
-| **Frontend** | Next.js, React, TypeScript, JavaScript, HTML5, CSS3 |
-| **Backend & APIs** | Python, FastAPI, SQLAlchemy, SQL |
-| **Databases** | PostgreSQL, Neon, Supabase |
-| **AI Engineering** | OpenAI Agents SDK, Agentic AI, LLM applications, Prompt Engineering, RAG |
-| **Automation** | webhooks, n8n workflow automation |
-| **Vector Search** | Pinecone, embeddings, semantic search |
-| **Data Science** | Python-based data analysis |
+Fields marked `TODO` need the owner. Do not fill them in.
 
----
+### 5.1 Paper GenAI (featured, slug `paper-genai`)
 
-## 🚀 5. Projects Showcase (Projects ka Record)
+- Summary: Students in classes 9 to 12 pick one of their books and generate an exam paper from it.
+- What it does:
+  - Generates a paper from a chosen book
+  - MCQ quizzes with scoring, so students can check their exam preparation
+  - A chatbot for study questions
+  - Save, print and download generated papers
+  - Light and dark theme
+- Stack: React, Next.js, Python, FastAPI, RAG, Gemini API, Groq API
+- Live: https://paper-genai.vercel.app
+- GitHub: https://github.com/codebymz/paper-genai
+- Screenshot: TODO
 
-### 1. 📄 Paper GenAI
-- **Status:** Live
-- **Role:** Full-Stack Developer & AI Integration
-- **Live Demo:** [paper-genai.vercel.app](https://paper-genai.vercel.app)
-- **GitHub Link:** Private / `#`
-- **Tech Stack:** FastAPI, SQLAlchemy, Neon DB, Groq AI (LLaMA 3 70B), PyMuPDF
-- **Description:** AI-powered exam paper generator for Pakistani students (Classes 9–12, Punjab Board). Generates board-aligned papers automatically with PDF export.
-- **Key Features:**
-  - Board-aligned exam paper generation
-  - PDF export with PyMuPDF
-  - Pakistan education system support
-  - LLaMA 3 70B integration
+### 5.2 HBS Admin Portal (featured, slug `hbs-admin-portal`)
 
----
+- Summary: An office management system for a school. Staff manage student fees, class attendance and other records in one place.
+- What it does:
+  - Student fee management
+  - Class attendance
+  - Other school office records (owner to list exact modules: TODO)
+  - Sign-in handled by Clerk
+- Stack: React, Next.js, Python, FastAPI, Clerk
+- Live: none listed
+- GitHub: none (private repository). Show the label "Private repository" instead of a link.
+- Screenshot: TODO (must not show real student data)
 
-### 2. ⚡ Speed Lab
-- **Status:** Live
-- **Role:** Frontend Developer & UI Designer
-- **Live Demo:** [speed-lab.vercel.app](https://speed-lab.vercel.app)
-- **GitHub Link:** Private / `#`
-- **Tech Stack:** HTML5, CSS3, JavaScript, Vercel
-- **Description:** A feature-rich typing speed testing and network diagnostic tool built for performance tracking and analytics.
-- **Key Features:**
-  - Real-time typing speed measurement
-  - Network diagnostic tools
-  - Performance analytics dashboard
-  - Responsive modern UI
+### 5.3 Spice Garden (featured, slug `spice-garden`)
 
----
+- Summary: A table ordering system for a restaurant. Each table has a QR code, and customers order from their phone.
+- What it does:
+  - Every table has a QR code that carries its table number
+  - Scanning opens the menu
+  - The customer places the order from the menu
+  - The order appears on the kitchen screen
+- Stack: TODO (owner to confirm)
+- Live: none listed
+- GitHub: https://github.com/codebymz/spice-garden-restaurant
+- Screenshot: TODO
 
-### 3. 🌐 Zainulabdin Project / MZ NEXORA Portfolio
-- **Status:** Live
-- **Role:** Solo Developer & Designer
-- **Live Demo:** [zainulabdin-project.vercel.app](https://zainulabdin-project.vercel.app)
-- **GitHub Link:** Private / `#`
-- **Tech Stack:** HTML5, CSS3, JavaScript, Vercel
-- **Description:** Modern personal project showcase with interactive 3D UI, smooth animations, and a premium dark theme.
-- **Key Features:**
-  - 3D interactive showcase ring
-  - Smooth CSS animations & particle effects
-  - Premium dark theme with light/dark switch
-  - Fully responsive design
+### 5.4 ZAPR (featured, slug `zapr`)
 
----
+- Summary: A file conversion tool that converts documents between formats.
+- What it does:
+  - Converts files from one format to another, for example PPT to PDF, PDF to Excel, Excel to Word
+- Stack: React, Python
+- Status: coming soon. Show a "Coming soon" label instead of a live link.
+- GitHub: https://github.com/codebymz/zapr
+- Screenshot: TODO
 
-### 4. 🎓 Student Portal
-- **Status:** Private Code
-- **Role:** Backend Developer & Database Designer
-- **Live Demo:** `#`
-- **GitHub Link:** [github.com/zaini12121](https://github.com/zaini12121)
-- **Tech Stack:** FastAPI, PostgreSQL, JWT, bcrypt, Neon DB
-- **Description:** Dual-role login (Admin & Student) with separate dashboards, attendance system, monthly fee tracker (paid/unpaid).
-- **Key Features:**
-  - Admin + Student dual dashboards
-  - Attendance tracking system
-  - Monthly fee management
-  - JWT authentication & security
+### 5.5 Other projects (list, no detail pages)
 
----
+- Speed Lab: A typing speed test and an internet speed test. Stack: React, Python, FastAPI. Live: https://speed-lab.vercel.app. GitHub: https://github.com/codebymz/Speed-Lab
+- MZ Nexora: Website for the owner's agency, with a chatbot that answers questions about the company. Stack: TODO. Live: https://mznexora.vercel.app. GitHub: https://github.com/codebymz/mznexora
 
-### 5. 🍽️ QR Menu System
-- **Status:** Private Code
-- **Role:** Full-Stack Developer
-- **Live Demo:** `#`
-- **GitHub Link:** [github.com/zaini12121](https://github.com/zaini12121)
-- **Tech Stack:** HTML5, CSS3, JavaScript, FastAPI
-- **Description:** Customers scan a QR code to open a digital restaurant menu, place online orders, and book tables.
-- **Key Features:**
-  - QR code digital menu
-  - Online ordering system
-  - Table booking integration
-  - Responsive mobile-first design
+## 6. Skills
 
----
+Show as grouped tags. No levels, bars or percentages.
 
-## 📁 6. Important Files & Assets Reference (Files aur Documents)
+- Backend: Python, FastAPI, REST APIs, SQLAlchemy, SQL
+- Database and vector: Neon (PostgreSQL), Pinecone
+- AI: RAG, Embeddings, Gemini API, Groq API
+- Automation: n8n
+- Frontend: React, Next.js, TypeScript, JavaScript, HTML, CSS, Tailwind CSS
+- Tools: Git, GitHub, Vercel, Clerk
+- AI tools: Claude, Antigravity IDE
 
-- **CV / Resume:** `assets/Muhammad_Zain_CV.pdf`
-- **Logo:** `assets/logo.png`
-- **Profile / Portrait Images:** `assets/zain-hero.png`, `assets/zain-about.png`, `assets/portrait.jpg`
-- **Project Images:** `assets/paper-genai.png`, `assets/speed lab.png`, `assets/portfolio-preview.webp`
+## 7. Experience and education
+
+Experience timeline (work and internships), newest first.
+
+- MZ Nexora, Founder and Full-Stack Developer. August 2026 to present. Faisalabad, Pakistan.
+- SDI Welfare, Digital Marketing intern. August 2026 to October 2026. Also completed the Digital Marketing course at the same organisation.
+- Alliance Public School, Arabic teacher. Approximately 1 year. Faisalabad, Pakistan. (Exact start and end dates: TODO — owner to confirm.)
+- Saylani Mass IT Training (SMIT), AI and Data Science — intern and studying. November 2025 to November 2026.
+
+Education and courses (shown in the Study journey section).
+
+- Intermediate in Computer Science (ICS), Govt. M.C. Higher Secondary School, G.M. Abad, Faisalabad. April 2024 to September 2026.
+- Matriculation, Hassan Bin Sabit High School, Faisalabad. 2021 to 2023.
+- Hifz-ul-Quran, Al-Rehman Islamic Center. 2017 to 2020.
+- AI and Data Science, Saylani Mass IT Training (SMIT). November 2025 to November 2026. (Also listed in Experience as an internship.)
+- Digital Marketing, SDI Welfare. August 2026 to October 2026. (Also listed in Experience as an internship.)
+- Web Development. Self-learning.
+- Introduction to Artificial Intelligence, Cisco Networking Academy. Online.
+
+Note: Arabic teaching role is now shown by default per owner decision on 2026-10-05.
+
+## 8. SEO values
+
+Home:
+- Title: Muhammad Zain Ul Abdin | AI-driven full-stack developer
+- Description: Full-stack developer from Faisalabad, Pakistan. I build web apps and AI tools with Next.js, React and FastAPI.
+- Canonical: https://mzainulabdin.xyz/
+- OG image: 1200x630, name and role line on a plain background, no gradient
+
+Project pages: title format `{Project name} | Muhammad Zain Ul Abdin`, description is the project summary from section 5.
+
+JSON-LD `Person`:
+- name: Muhammad Zain Ul Abdin
+- jobTitle: Full-Stack Developer
+- url: https://mzainulabdin.xyz
+- address: locality Faisalabad, region Punjab, country PK
+- sameAs: the LinkedIn and GitHub links above
+
+## 9. Open items (owner)
+
+- Screenshot for each featured project
+- HBS Admin Portal: list of exact modules
+- Spice Garden and MZ Nexora: stack
+- Arabic teacher at Alliance Public School: exact start and end dates
+- Intro animation: yes or no (default no)
+- Review the About draft and remove anything that is not true
+- Fix the spellings on LinkedIn: Alliance Public School, Intermediate, Secondary
