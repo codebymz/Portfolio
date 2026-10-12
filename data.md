@@ -128,9 +128,11 @@ Experience timeline (work and internships), newest first.
 
 Education and courses (shown in the Study journey section).
 
+- Bachelor of Science in Computer Science (BS CS), Virtual University of Pakistan. Continuing.
 - Intermediate in Computer Science (ICS), Govt. M.C. Higher Secondary School, G.M. Abad, Faisalabad. April 2024 to September 2026.
 - Matriculation, Hassan Bin Sabit High School, Faisalabad. 2021 to 2023.
 - Hifz-ul-Quran, Al-Rehman Islamic Center. 2017 to 2020.
+- MS Office, SoftWiz Solutions and Institute. 2024 (3 months). Course completed.
 - AI and Data Science, Saylani Mass IT Training (SMIT). November 2025 to November 2026. (Also listed in Experience as an internship.)
 - Digital Marketing, SDI Welfare. August 2026 to October 2026. (Also listed in Experience as an internship.)
 - Web Development. Self-learning.

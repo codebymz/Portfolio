@@ -182,6 +182,9 @@ Add a line for every decision. Newest at the bottom.
 - 2026-10-06: The Home heading displays "Muhammad" and "Zain Ul Abdin" on separate lines; MZ stays visible at the desktop navbar's left edge.
 - 2026-10-06: MZ is a separate home-linked glass monogram to the left of the navigation pill, balanced by the theme toggle on the right.
 - 2026-10-06: Contact email changed to zzawar521@gmail.com, WhatsApp +923269656457 was added, and the contact form uses a prefilled mailto draft without a backend.
+- 2026-10-12: BS CS (continuing) at Virtual University of Pakistan added to formal education.
+- 2026-10-12: MS Office certificate course from SoftWiz Solutions and Institute (2024, 3 months) confirmed in Study journey courses.
+- 2026-10-12: Replaced default Astro favicon with a custom MZ monogram favicon (SVG & ICO).
 
 ## 13. Open items
 

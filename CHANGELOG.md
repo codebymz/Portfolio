@@ -2,6 +2,13 @@
 
 Newest entry at the top. The coding agent adds an entry here after every change, in the same step as the change.
 
+## 2026-10-12, add BS CS, MS Office course, and custom MZ favicon
+- What changed: Added continuing BS CS from Virtual University of Pakistan to formal education, verified MS Office 3-month course (SoftWiz Solutions and Institute, 2024) under courses/certificates, and replaced the default Astro favicon with a custom MZ monogram favicon (SVG and multi-size ICO).
+- Files: `src/components/EducationSection.astro`, `public/favicon.svg`, `public/favicon.ico`, `data.md`, `prd.md`, `CHANGELOG.md`
+- Why: The owner requested adding MS Office certificate from SoftWiz Solutions and Institute (2024, 3 months), their ongoing BS CS from Virtual University, and replacing the Astro favicon with a clean MZ favicon.
+- Docs updated: `data.md`, `prd.md`
+- Needs owner: nothing
+
 ## 2026-10-10, prepare Vercel deployment handoff
 - What changed: Added the owner steps for pushing this portfolio to a new GitHub repository, connecting it to Vercel, assigning `mzainulabdin.xyz`, and redirecting the old Vercel URL.
 - Files: `CHANGELOG.md`
