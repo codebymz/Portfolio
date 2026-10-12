@@ -1,10 +1,5 @@
 ---
-import { existsSync } from 'node:fs';
-import { fileURLToPath } from 'node:url';
 import { BackgroundPaths } from './ui/background-paths';
-
-const cvPath = new URL('../../public/cv.pdf', import.meta.url);
-const hasCv = existsSync(fileURLToPath(cvPath));
 ---
 
 <section id="home" class="hero-section" aria-label="Introduction">
@@ -57,14 +52,12 @@ const hasCv = existsSync(fileURLToPath(cvPath));
             </svg>
             Contact me
           </a>
-          {hasCv && (
-            <a href="/cv.pdf" class="btn btn-ghost" download>
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M12 3v12m-5-5 5 5 5-5M4 18v3h16v-3" />
-              </svg>
-              Download CV
-            </a>
-          )}
+          <a href="/cv.pdf" class="btn btn-ghost" download="Muhammad_Zain_Ul_Abdin_CV.pdf">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 3v12m-5-5 5 5 5-5M4 18v3h16v-3" />
+            </svg>
+            Download CV
+          </a>
           <a href="#work" class="btn btn-ghost">
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <path d="M4 7h16v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7Z" />
