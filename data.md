@@ -1,6 +1,6 @@
 # Content and data: MZAINULABDIN.xyz
 
-Last updated: 2026-10-04
+Last updated: 2026-10-06
 Read `prd.md` first. This is the only source for text, links and facts on the site. When you change anything here, add an entry to `CHANGELOG.md`.
 
 Do not add facts that are not in this file. If something is missing, add it to "Open items" at the bottom.
@@ -18,17 +18,21 @@ Do not add facts that are not in this file. If something is missing, add it to "
 
 ## 2. Contact
 
-- Email: hz880710@gmail.com (use as `mailto:`)
+- Email: zzawar521@gmail.com (use as `mailto:`)
 - LinkedIn: https://www.linkedin.com/in/devmzainulabdin
 - GitHub: https://github.com/codebymz
-- Phone: not published
+- WhatsApp: +923269656457 (use `https://wa.me/923269656457`)
 
 ## 3. Home
 
-- Heading (h1): Muhammad Zain Ul Abdin
+- Badge: Open to internships, freelance and remote work
+- Heading (h1), two lines: Muhammad / Zain Ul Abdin
 - Role line: AI-driven full-stack developer
-- Sentence: I build web apps and AI tools with Next.js, React and FastAPI.
-- Buttons: "View my work" (primary, goes to `#work`), "Contact me" (secondary, goes to `#contact`)
+- Description: I build web apps and AI tools with Next.js, React and FastAPI. I also run MZ Nexora, a small digital agency.
+- Meta row: map-pin icon + Faisalabad, Pakistan; briefcase icon + Founder at MZ Nexora
+- Buttons: "Contact me" (primary, mail icon, `mailto:` link from section 2), "Download CV" (secondary glass, download icon, `/cv.pdf`)
+- Divider, then "Find me online" with GitHub, LinkedIn, Email and WhatsApp links from section 2.
+- Photo: the owner's real photo at `public/images/zain.jpg` (TODO, owner supplies it)
 
 ## 4. About
 
@@ -160,3 +164,5 @@ JSON-LD `Person`:
 - Intro animation: yes or no (default no)
 - Review the About draft and remove anything that is not true
 - Fix the spellings on LinkedIn: Alliance Public School, Intermediate, Secondary
+- Owner photo at `public/images/zain.jpg`
+- CV PDF at `public/cv.pdf`

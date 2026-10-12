@@ -68,10 +68,6 @@ const {
           const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
           const theme = stored ? stored : prefersDark ? 'dark' : 'light';
           document.documentElement.setAttribute('data-theme', theme);
-          const meta = document.getElementById('meta-theme-color');
-          if (meta) {
-            meta.setAttribute('content', theme === 'dark' ? '#000000' : '#F2F2F7');
-          }
         } catch (e) {}
       })();
     </script>
@@ -88,6 +84,13 @@ const {
       <slot />
     </main>
     <Footer />
+
+    <script>
+      import { setupThemeControls } from '../scripts/theme';
+
+      setupThemeControls();
+      document.addEventListener('astro:after-swap', setupThemeControls);
+    </script>
 
     <script>
       // Scroll reveal motion following design.md section 9

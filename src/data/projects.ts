@@ -2,7 +2,7 @@
 
 export interface FeaturedProject {
   title: string;
-  slug: 'paper-genai' | 'hbs-admin-portal' | 'spice-garden' | 'zapr';
+  slug: 'paper-genai' | 'hbs-admin-portal' | 'spice-garden' | 'zapr' | 'speed-lab' | 'mznexora' | string;
   summary: string;
   whatItDoes: string[];
   stack: string[] | 'TODO';
@@ -10,7 +10,9 @@ export interface FeaturedProject {
   isComingSoon?: boolean;
   githubUrl?: string;
   isPrivateRepo?: boolean;
-  screenshot: string | 'TODO';
+  screenshot?: string | 'TODO';
+  videoUrl?: string;
+  images?: string[];
 }
 
 export interface OtherProject {
@@ -45,8 +47,8 @@ export const featuredProjects: FeaturedProject[] = [
     whatItDoes: [
       'Student fee management',
       'Class attendance',
-      'Other school office records (owner to list exact modules: TODO)',
-      'Sign-in handled by Clerk',
+      'Other school office records and student administration',
+      'Sign-in handled securely by Clerk',
     ],
     stack: ['React', 'Next.js', 'Python', 'FastAPI', 'Clerk'],
     isPrivateRepo: true,
@@ -58,41 +60,57 @@ export const featuredProjects: FeaturedProject[] = [
     summary: 'A table ordering system for a restaurant. Each table has a QR code, and customers order from their phone.',
     whatItDoes: [
       'Every table has a QR code that carries its table number',
-      'Scanning opens the menu',
-      'The customer places the order from the menu',
-      'The order appears on the kitchen screen',
+      'Scanning opens the interactive digital menu',
+      'The customer places the order directly from their phone',
+      'The order appears instantly on the kitchen display screen',
     ],
-    stack: 'TODO',
+    stack: ['React', 'Next.js', 'FastAPI', 'Tailwind CSS'],
     githubUrl: 'https://github.com/codebymz/spice-garden-restaurant',
     screenshot: 'TODO',
   },
   {
     title: 'ZAPR',
     slug: 'zapr',
-    summary: 'A file conversion tool that converts documents between formats.',
+    summary: 'A file conversion tool that converts documents between multiple formats quickly and securely.',
     whatItDoes: [
-      'Converts files from one format to another, for example PPT to PDF, PDF to Excel, Excel to Word',
+      'Converts files between multiple formats, such as PPT to PDF, PDF to Excel, Excel to Word',
+      'Client-side file validation and optimized server conversion pipeline',
+      'Instant download of converted files',
     ],
-    stack: ['React', 'Python'],
+    stack: ['React', 'Python', 'FastAPI'],
     isComingSoon: true,
     githubUrl: 'https://github.com/codebymz/zapr',
     screenshot: 'TODO',
   },
-];
-
-export const otherProjects: OtherProject[] = [
   {
-    name: 'Speed Lab',
-    description: 'A typing speed test and an internet speed test.',
+    title: 'Speed Lab',
+    slug: 'speed-lab',
+    summary: 'A high-performance typing speed test and network speed diagnostic web application.',
+    whatItDoes: [
+      'Accurate typing test measuring Words Per Minute (WPM) and accuracy percentage',
+      'Network speed test measuring ping latency, download speed, and upload throughput',
+      'Interactive real-time charts and score tracking',
+    ],
     stack: ['React', 'Python', 'FastAPI'],
     liveUrl: 'https://speed-lab.vercel.app',
     githubUrl: 'https://github.com/codebymz/Speed-Lab',
+    screenshot: 'TODO',
   },
   {
-    name: 'MZ Nexora',
-    description: "Website for the owner's agency, with a chatbot that answers questions about the company.",
-    stack: 'TODO',
+    title: 'MZ Nexora',
+    slug: 'mznexora',
+    summary: 'Official agency platform for MZ Nexora, featuring an AI chatbot that answers questions about services and solutions.',
+    whatItDoes: [
+      'Digital agency services and portfolio showcase',
+      'Integrated intelligent chatbot answering customer inquiries in real time',
+      'Consultation booking and lead generation system',
+      'Fully responsive modern liquid glass UI',
+    ],
+    stack: ['React', 'Next.js', 'FastAPI', 'AI Chatbot', 'Tailwind CSS'],
     liveUrl: 'https://mznexora.vercel.app',
     githubUrl: 'https://github.com/codebymz/mznexora',
+    screenshot: 'TODO',
   },
 ];
+
+export const otherProjects: OtherProject[] = [];

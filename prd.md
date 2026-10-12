@@ -58,7 +58,7 @@ In scope:
 
 Out of scope (do not build):
 - Blog, CMS, login, database, analytics beyond Vercel's built-in
-- Contact form with a backend (use `mailto:` only)
+- Backend contact form or external form service (the simple contact form uses `mailto:` only)
 - macOS-style window, dock, Finder, or the three-button window chrome
 - Boot or "Hello" intro animation (see Open items)
 - 3D, canvas, particles, animated backgrounds
@@ -89,13 +89,13 @@ Home sections, in this order:
 
 | Section | Id | Behavior |
 |---|---|---|
-| Navbar | none | Floating liquid glass pill, fixed at top. Links: Home, Work, About, Skills, Experience, Contact. Theme toggle on the right. On mobile it collapses to a menu button that opens a glass sheet. |
-| Home | `#home` | Name, one-line role, one sentence, two buttons: "View my work" goes to `#work`, "Contact me" goes to `#contact`. |
+| Navbar | none | Floating navigation pill, fixed at top, with Home, Work, About, Skills, Experience and Contact links. A separate MZ home monogram sits to its left; a separate theme toggle sits to its right. On mobile the pill collapses to a menu button that opens a glass sheet. |
+| Home | `#home` | Left-aligned hero: availability status pill, two-line full-name heading ("Muhammad" / "Zain Ul Abdin"), static role line, description, location and founder meta row, "Contact me" and optional "Download CV" buttons, divider, "Find me online" social links, optional owner photo in a rounded frame, and the user-activated pull-cord theme lamp. "View my work" is reached through the navbar. |
 | Work | `#work` | Featured projects as full-width rows, then "Other projects" as a plain list. This is the most important section. |
 | About | `#about` | Three short paragraphs from `data.md`. |
 | Skills | `#skills` | Grouped tags. No bars or percentages. |
 | Experience | `#experience` | Short timeline of work and education. A timeline is the one place where order carries meaning. |
-| Contact | `#contact` | Email button, LinkedIn link, GitHub link. |
+| Contact | `#contact` | Name, email or phone number, and details form that opens a prefilled email draft; email, WhatsApp, LinkedIn and GitHub links. |
 | Footer | none | Name, year, the same links. |
 
 Project detail page layout: title, one-paragraph summary, screenshot(s), "What it does" list, stack tags, links (live, GitHub or "Private repository"), link back to Work.
@@ -156,7 +156,7 @@ Tick each phase when done and log it in `CHANGELOG.md`.
 - [x] 4. Work section and the 4 project detail pages
 - [x] 5. About, Skills, Experience, Contact
 - [x] 6. Scroll reveal and motion polish
-- [ ] 7. Responsive pass at 360, 768, 1024 and 1440 px
+- [x] 7. Responsive pass at 360, 768, 1024 and 1440 px
 - [x] 8. SEO and performance pass
 - [ ] 9. Accessibility pass, test both themes
 - [ ] 10. Deploy to Vercel, connect `mzainulabdin.xyz`, redirect the old site
@@ -177,6 +177,11 @@ Add a line for every decision. Newest at the bottom.
 - 2026-10-05: SMIT confirmed as intern and studying, November 2025 – November 2026.
 - 2026-10-05: SDI Welfare Digital Marketing internship (Aug–Oct 2026) added to Experience.
 - 2026-10-05: ICS moved out of Experience into a new Study journey section. Education section added to site and navbar.
+- 2026-10-06: Home hero changed to a full-name, contact-first layout with an optional owner photo and CV; a user-activated pull-cord lamp was added as a synchronized theme switch.
+- 2026-10-06: The Home heading uses the owner's full name, and the lamp drawing uses a defined shade rim, socket and pear-shaped bulb.
+- 2026-10-06: The Home heading displays "Muhammad" and "Zain Ul Abdin" on separate lines; MZ stays visible at the desktop navbar's left edge.
+- 2026-10-06: MZ is a separate home-linked glass monogram to the left of the navigation pill, balanced by the theme toggle on the right.
+- 2026-10-06: Contact email changed to zzawar521@gmail.com, WhatsApp +923269656457 was added, and the contact form uses a prefilled mailto draft without a backend.
 
 ## 13. Open items
 

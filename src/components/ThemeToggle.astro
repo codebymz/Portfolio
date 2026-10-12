@@ -6,6 +6,7 @@
   type="button"
   id="theme-toggle"
   class="glass theme-toggle-btn"
+  data-theme-toggle="button"
   aria-label="Switch theme"
   aria-pressed="false"
 >
@@ -49,8 +50,8 @@
 
 <style>
   .theme-toggle-btn {
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
     border-radius: 999px;
     display: inline-flex;
     align-items: center;
@@ -82,47 +83,3 @@
   }
 </style>
 
-<script>
-  function setupThemeToggle() {
-    const toggle = document.getElementById('theme-toggle');
-    const metaThemeColor = document.getElementById('meta-theme-color');
-
-    function updateState() {
-      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-      if (toggle) {
-        toggle.setAttribute('aria-pressed', isDark ? 'true' : 'false');
-      }
-      if (metaThemeColor) {
-        metaThemeColor.setAttribute('content', isDark ? '#000000' : '#F2F2F7');
-      }
-    }
-
-    if (toggle) {
-      updateState();
-      toggle.addEventListener('click', () => {
-        // Enable smooth theme transition on manual toggle
-        document.body.classList.add('theme-transition');
-
-        const currentTheme = document.documentElement.getAttribute('data-theme');
-        const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
-
-        document.documentElement.setAttribute('data-theme', nextTheme);
-        localStorage.setItem('theme', nextTheme);
-        updateState();
-      });
-    }
-
-    // Listen to OS scheme changes if user hasn't set an explicit preference
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-      if (!localStorage.getItem('theme')) {
-        const nextTheme = e.matches ? 'dark' : 'light';
-        document.documentElement.setAttribute('data-theme', nextTheme);
-        updateState();
-      }
-    });
-  }
-
-  // Setup on initial load and view transitions
-  setupThemeToggle();
-  document.addEventListener('astro:after-swap', setupThemeToggle);
-</script>

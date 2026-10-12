@@ -39,12 +39,32 @@ const pageCanonical = `https://mzainulabdin.xyz/projects/${project.slug}`;
       <p class="project-summary">{project.summary}</p>
     </header>
 
-    <!-- Screenshot Area (Placeholder when TODO) -->
-    <section class="project-media" aria-label="Project screenshot">
-      <div class="screenshot-placeholder" aria-label={`${project.title} screenshot placeholder`}>
-        <span class="placeholder-title">{project.title}</span>
-        <span class="placeholder-label">Screenshot (TODO: owner supplies real screenshot)</span>
-      </div>
+    <!-- Media Area (Video, Screenshot or Placeholder) -->
+    <section class="project-media" aria-label="Project media">
+      {project.videoUrl ? (
+        <div class="video-container" style="border-radius: var(--radius-media); overflow: hidden; border: 1px solid var(--border); background: #000;">
+          <video
+            src={project.videoUrl}
+            autoplay
+            loop
+            muted
+            playsinline
+            controls
+            style="width: 100%; height: auto; display: block;"
+          ></video>
+        </div>
+      ) : project.screenshot && project.screenshot !== 'TODO' ? (
+        <img
+          src={project.screenshot}
+          alt={`${project.title} screenshot`}
+          style="width: 100%; border-radius: var(--radius-media); border: 1px solid var(--border);"
+        />
+      ) : (
+        <div class="screenshot-placeholder" aria-label={`${project.title} screenshot placeholder`}>
+          <span class="placeholder-title">{project.title}</span>
+          <span class="placeholder-label">Preview media (Video or Screenshot)</span>
+        </div>
+      )}
     </section>
 
     <!-- What it does Section -->

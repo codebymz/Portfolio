@@ -1,6 +1,6 @@
 # Design system: MZAINULABDIN.xyz
 
-Last updated: 2026-10-04
+Last updated: 2026-10-06
 Read `prd.md` first. When you change anything in this file, add an entry to `CHANGELOG.md`.
 
 ---
@@ -28,6 +28,7 @@ Define as CSS variables on `:root` (light) and `:root[data-theme="dark"]`. The v
 | `--text-muted` | `#636366` | `#98989F` |
 | `--border` | `rgba(60,60,67,0.18)` | `rgba(255,255,255,0.12)` |
 | `--accent` | `#0066D6` | `#0A84FF` |
+| `--lamp-on` | `#FFC933` | `#FFC933` |
 
 Accent is used for links, focus rings and nothing else. Do not use it as a fill color.
 
@@ -110,12 +111,18 @@ Rules:
 Home:
 
 ```
-[ floating glass navbar: Zain Ul Abdin   Work About Skills Experience Contact   (toggle) ]
+[ floating glass navbar: Home Work About Skills Experience Contact ]  (separate theme toggle)
 
-Muhammad Zain Ul Abdin
+Open to internships, freelance and remote work
+Muhammad
+Zain Ul Abdin
 AI-driven full-stack developer
-One sentence about what he builds.
-[ View my work ]  [ Contact me ]
+I build web apps and AI tools with Next.js, React and FastAPI. I also run MZ Nexora, a small digital agency.
+Faisalabad, Pakistan   Founder at MZ Nexora
+[ Contact me ]  [ Download CV, when `public/cv.pdf` exists ]
+Find me online   GitHub   LinkedIn   Email
+                                      [owner photo]
+                      [pull-cord lamp at top-right of photo]
 ```
 
 Featured project row (desktop, 12-column grid, screenshot 7 columns, text 5 columns):
@@ -139,9 +146,10 @@ Experience: a simple vertical timeline with year or month range, title, place.
 
 Navbar
 - Pill, centered, `position: fixed`, 16px from the top, max width 760px, height 56px, class `glass`.
-- Left: name text "Zain Ul Abdin". Middle: section links. Right: theme toggle.
-- Active section link uses `--text`, others use `--text-muted`.
-- Under 640px: name on the left, theme toggle and menu button on the right. The menu opens a glass sheet with the links stacked.
+- Desktop: a standalone 48px glass MZ monogram links home at the left of the centered pill. The pill contains Home, Work, About, Skills, Experience and Contact links, each with a small inline SVG icon and visible text. The theme toggle is a separate glass circle at the right.
+- Active section link is a filled pill using `--text` with `--bg` text; inactive links use `--text-muted`.
+- Under 640px: the MZ monogram, menu-button pill and theme toggle remain separate and fit in one row. The menu opens a glass sheet with the icon-and-label links stacked.
+- The Home heading is the full name split into two lines: "Muhammad" then "Zain Ul Abdin". Keep both lines in Manrope; use weight 600 for the first and 700 for the second.
 
 Theme toggle
 - 40x40 circle, class `glass`, inline SVG sun and moon, `aria-label="Switch theme"`, `aria-pressed` reflects dark mode.
@@ -150,6 +158,10 @@ Buttons (minimum height 44px, horizontal padding 20px, radius 999px, weight 600)
 - Primary: inverted neutral. Fill `--text`, label `--bg`. Used for "View my work" and the email button.
 - Secondary: class `glass`, label `--text`. Used for "Contact me" and other secondary actions.
 - No accent fill, no gradient, no arrow glyphs in labels.
+
+Contact form
+- Keep the form plain and unframed. Fields: Name, Email or phone number, and Details. Submitting opens a prefilled `mailto:` message; do not add a backend or external form service.
+- Include the email and WhatsApp contact links alongside LinkedIn and GitHub in the contact area and footer.
 
 Links
 - Color `--accent`, underlined, underline offset 3px. On hover, thicker underline. Same on focus.
@@ -164,7 +176,15 @@ Screenshots
 - Plain image with 1px `--border` and radius 20px. No fake browser frame, no device mockup.
 
 Icons
-- Inline SVG, only for the theme toggle and menu button.
+- Small inline SVG icons use one consistent stroke style, are `aria-hidden="true"`, and sit beside a visible text label. They are allowed in the navbar, hero meta row, hero buttons and social row. The theme toggle and menu button may remain icon-only controls with accessible names.
+
+Pull-cord lamp
+- A small, user-activated lamp hangs from the top-right of the portrait frame; if the portrait is missing, it hangs from the top-right of the hero container. Its wrapper is not clipped by the portrait.
+- Use inline SVG only: a 1.5px `--text-muted` cord with a small pull bead, a `--text` dome shade about 44px wide with a narrow rim, a visible socket and a pear-shaped bulb. Total hanging height is about 120px or less. ON fills the bulb with `--lamp-on`; OFF leaves it outlined in `--text-muted`.
+- It is a real button with `role="switch"`, accessible name "Light", `aria-checked` true in the light theme, a 44px-or-larger hit area and the standard visible focus ring. Its z-index is above the portrait and below the navbar.
+- Pulling switches the theme immediately. The cord stretches about 10px over 120ms, then swings 8deg, -6deg, 3deg, -1deg and 0deg over about 900ms around the top of the cord. Use transforms only, remove the animation state on `animationend`, and restart it on another pull during a swing.
+- Call `navigator.vibrate(12)` only when supported on touch devices, and never when reduced motion is requested. With `prefers-reduced-motion: reduce`, switch instantly without stretching or swinging.
+- Lamp state is styled from `data-theme` in CSS before paint and stays synchronized with the navbar toggle through the shared theme function. No glow or gradient. The bulb is the only element allowed the second color `--lamp-on`.
 
 ## 8. Do not use
 
@@ -177,6 +197,10 @@ Icons
 - Skill bars, percentages, stat counters
 - Emojis
 - macOS window chrome, dock, traffic-light buttons
+- Decorative elements, except for the status-pill availability badge specified below and the pull-cord lamp specified in section 7. The lamp moves only after user input; it never moves automatically.
+- Typing effects, including animated role text or a blinking cursor.
+
+The availability badge is a status pill, not an eyebrow label: use a 1px border, no fill and 14px text. It is allowed above the heading.
 
 ## 9. Motion
 
@@ -188,6 +212,7 @@ The owner wants simple scroll effects. Keep to exactly this:
 - Theme switch: `background-color`, `color` and `border-color` transition over 200ms. Disabled on first load.
 - No parallax, cursor effects, marquee, typing effect, or auto-playing anything.
 - With `prefers-reduced-motion: reduce`, turn off the reveal and smooth scroll.
+- Exception: the pull-cord lamp may stretch and swing only after the user activates it, as specified in section 7. Reduced motion disables both movements.
 
 ## 10. Responsive
 

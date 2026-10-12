@@ -1,0 +1,116 @@
+<button
+  type="button"
+  class="pull-cord-button"
+  data-theme-toggle="lamp"
+  role="switch"
+  aria-label="Light"
+  aria-checked="true"
+>
+  <svg class="lamp-assembly" viewBox="0 0 72 120" aria-hidden="true">
+    <path class="lamp-cord" d="M36 0v51" />
+    <circle class="lamp-bead" cx="36" cy="54" r="2.5" />
+    <path class="lamp-cap" d="M33 58h6v6h-6z" />
+    <path class="lamp-shade" d="M13 80c2.5-10.5 11-16 23-16s20.5 5.5 23 16H13Z" />
+    <path class="lamp-rim" d="M13 80h46" />
+    <path class="lamp-socket" d="M31 80v6h10v-6" />
+    <g transform="rotate(180 36 99.5)">
+      <path class="lamp-bulb" d="M28 95c0-5 3.5-8 8-8s8 3 8 8c0 3.3-1.7 5.4-3.8 7.6-.9.9-1.2 1.5-1.2 2.4h-6c0-.9-.3-1.5-1.2-2.4C29.7 100.4 28 98.3 28 95Z" />
+      <path class="lamp-base" d="M32 106h8m-7.5 3h7m-6.5 3h6" />
+    </g>
+  </svg>
+</button>
+
+<style>
+  .pull-cord-button {
+    position: absolute;
+    z-index: 5;
+    top: 0;
+    right: 8px;
+    width: 72px;
+    height: 128px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--text);
+    cursor: pointer;
+    touch-action: manipulation;
+  }
+
+  .lamp-assembly {
+    display: block;
+    width: 72px;
+    height: 120px;
+    overflow: visible;
+    transform-origin: 50% 0;
+  }
+
+  .lamp-cord {
+    fill: none;
+    stroke: var(--text-muted);
+    stroke-width: 1.5;
+  }
+
+  .lamp-bead {
+    fill: var(--text-muted);
+  }
+
+  .lamp-cap,
+  .lamp-socket {
+    fill: var(--text-muted);
+  }
+
+  .lamp-shade {
+    fill: var(--text);
+    stroke: var(--text-muted);
+    stroke-width: 1;
+  }
+
+  .lamp-rim {
+    fill: none;
+    stroke: var(--text-muted);
+    stroke-width: 1.5;
+    stroke-linecap: round;
+  }
+
+  .lamp-neck,
+  .lamp-base {
+    fill: none;
+    stroke: var(--text-muted);
+    stroke-width: 1.5;
+    stroke-linecap: round;
+  }
+
+  .lamp-bulb {
+    fill: none;
+    stroke: var(--text-muted);
+    stroke-width: 1.75;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  :global(html:not([data-theme="dark"])) .lamp-bulb {
+    fill: var(--lamp-on);
+    stroke: var(--lamp-on);
+  }
+
+  .pull-cord-button.is-pulled .lamp-assembly {
+    animation: lamp-pull-swing 1020ms ease-in-out both;
+  }
+
+  @keyframes lamp-pull-swing {
+    0% { transform: translateY(0) rotate(0); }
+    12% { transform: translateY(10px) rotate(0); }
+    13% { transform: translateY(0) rotate(0); }
+    37% { transform: translateY(0) rotate(8deg); }
+    60% { transform: translateY(0) rotate(-6deg); }
+    78% { transform: translateY(0) rotate(3deg); }
+    90% { transform: translateY(0) rotate(-1deg); }
+    100% { transform: translateY(0) rotate(0); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .pull-cord-button.is-pulled .lamp-assembly {
+      animation: none;
+    }
+  }
+</style>

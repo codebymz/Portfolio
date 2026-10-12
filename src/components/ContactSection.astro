@@ -5,11 +5,11 @@
   <div class="site-container">
     <div class="contact-inner">
       <h2 id="contact-heading" class="contact-heading">Contact</h2>
-      <p class="contact-intro">Get in touch by email, or find me on LinkedIn and GitHub.</p>
+      <p class="contact-intro">Get in touch by email or WhatsApp, or find me on LinkedIn and GitHub.</p>
       <div class="contact-actions">
         <a
           id="contact-email"
-          href="mailto:hz880710@gmail.com"
+          href="mailto:zzawar521@gmail.com"
           class="btn btn-primary"
         >
           Send me an email
@@ -32,10 +32,49 @@
         >
           GitHub
         </a>
+        <a
+          id="contact-whatsapp"
+          href="https://wa.me/923269656457"
+          class="btn btn-secondary glass"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          WhatsApp
+        </a>
       </div>
+
+      <form id="contact-form" class="contact-form">
+        <label for="contact-name">Name</label>
+        <input id="contact-name" name="name" type="text" autocomplete="name" required />
+
+        <label for="contact-reply">Email or phone number</label>
+        <input id="contact-reply" name="reply" type="text" autocomplete="email" required />
+
+        <label for="contact-details">Details</label>
+        <textarea id="contact-details" name="details" rows="5" required></textarea>
+
+        <button class="btn btn-primary" type="submit">Send message</button>
+      </form>
+      <p class="contact-form-note">Submitting opens an email draft for you to send.</p>
     </div>
   </div>
 </section>
+
+<script>
+  const contactForm = document.querySelector<HTMLFormElement>('#contact-form');
+
+  contactForm?.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const formData = new FormData(contactForm);
+    const name = String(formData.get('name') ?? '').trim();
+    const reply = String(formData.get('reply') ?? '').trim();
+    const details = String(formData.get('details') ?? '').trim();
+    const subject = encodeURIComponent(`Portfolio contact from ${name}`);
+    const body = encodeURIComponent(`Name: ${name}\nEmail or phone: ${reply}\n\nDetails:\n${details}`);
+
+    window.location.href = `mailto:zzawar521@gmail.com?subject=${subject}&body=${body}`;
+  });
+</script>
 
 <style>
   #contact {
@@ -61,5 +100,43 @@
     flex-wrap: wrap;
     align-items: center;
     gap: var(--space-16);
+  }
+
+  .contact-form {
+    display: grid;
+    gap: var(--space-8);
+    margin-top: var(--space-48);
+  }
+
+  .contact-form label {
+    color: var(--text);
+    font-size: var(--font-size-small);
+    font-weight: 600;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%;
+    margin-bottom: var(--space-12);
+    padding: 12px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-tag);
+    background: var(--surface);
+    color: var(--text);
+    font: inherit;
+  }
+
+  .contact-form textarea {
+    resize: vertical;
+  }
+
+  .contact-form .btn {
+    justify-self: start;
+  }
+
+  .contact-form-note {
+    margin: var(--space-12) 0 0;
+    color: var(--text-muted);
+    font-size: var(--font-size-small);
   }
 </style>

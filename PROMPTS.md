@@ -100,7 +100,7 @@ Build #about, #skills, #experience and #contact using the text in data.md sectio
 - About: the three paragraphs as written, in a text column of max 680px.
 - Skills: grouped tags as in design.md section 7. No bars, no percentages, no icons.
 - Experience: a simple vertical timeline, newest first. Do NOT show the Arabic teacher entry (it is hidden by default, see prd.md section 13). Show SMIT without dates until the owner confirms them.
-- Contact: the email as a primary button using mailto:, plus LinkedIn and GitHub links. Do not show a phone number. No contact form.
+- Contact: use the email, WhatsApp, LinkedIn and GitHub links from data.md. Add a simple Name, Email or phone number, and Details form that opens a prefilled mailto draft. Do not add a backend or external form service.
 
 When done: tick phase 5, update CHANGELOG.md, short summary.
 ```
