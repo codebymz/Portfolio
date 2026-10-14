@@ -1,19 +1,19 @@
 ---
 // Footer component following prd.md section 5 and design.md
 const navLinks = [
-  { href: '#home', label: 'Home' },
-  { href: '#work', label: 'Work' },
-  { href: '#about', label: 'About' },
-  { href: '#skills', label: 'Skills' },
-  { href: '#experience', label: 'Experience' },
-  { href: '#contact', label: 'Contact' },
+  { href: "#home", label: "Home" },
+  { href: "#work", label: "Work" },
+  { href: "#about", label: "About" },
+  { href: "#skills", label: "Skills" },
+  { href: "#experience", label: "Experience" },
+  { href: "#contact", label: "Contact" },
 ];
 
 const externalLinks = [
-  { href: 'https://github.com/codebymz', label: 'GitHub' },
-  { href: 'https://www.linkedin.com/in/devmzainulabdin', label: 'LinkedIn' },
-  { href: 'mailto:zzawar521@gmail.com', label: 'Email' },
-  { href: 'https://wa.me/923269656457', label: 'WhatsApp' },
+  { href: "https://github.com/codebymz", label: "GitHub" },
+  { href: "https://www.linkedin.com/in/devmzainulabdin", label: "LinkedIn" },
+  { href: "mailto:zzawar521@gmail.com", label: "Email" },
+  { href: "https://wa.me/923269656457", label: "WhatsApp" },
 ];
 
 const currentYear = 2026;
@@ -29,35 +29,45 @@ const currentYear = 2026;
 
       <nav class="footer-nav" aria-label="Footer navigation">
         <ul class="footer-links" role="list">
-          {navLinks.map((link) => (
-            <li>
-              <a href={link.href} class="footer-link">
-                {link.label}
-              </a>
-            </li>
-          ))}
+          {
+            navLinks.map((link) => (
+              <li>
+                <a href={link.href} class="footer-link">
+                  {link.label}
+                </a>
+              </li>
+            ))
+          }
         </ul>
 
         <ul class="footer-links external-links" role="list">
-          {externalLinks.map((link) => (
-            <li>
-              <a
-                href={link.href}
-                class="footer-link"
-                target={link.href.startsWith('mailto:') ? undefined : '_blank'}
-                rel={link.href.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
-              >
-                {link.label}
-              </a>
-            </li>
-          ))}
+          {
+            externalLinks.map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  class="footer-link"
+                  target={
+                    link.href.startsWith("mailto:") ? undefined : "_blank"
+                  }
+                  rel={
+                    link.href.startsWith("mailto:")
+                      ? undefined
+                      : "noopener noreferrer"
+                  }
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))
+          }
         </ul>
       </nav>
     </div>
 
     <div class="footer-bottom">
       <p class="footer-copyright">
-        © {currentYear} Muhammad Zain Ul Abdin. All rights reserved.
+        © {currentYear} Muhammad Zain Ul Abdin
       </p>
     </div>
   </div>
@@ -193,7 +203,9 @@ const currentYear = 2026;
     filter: blur(40px);
     pointer-events: none;
     opacity: 0.6;
-    transition: opacity 0.5s ease, transform 0.5s ease;
+    transition:
+      opacity 0.5s ease,
+      transform 0.5s ease;
     animation: watermark-pulse 6s ease-in-out infinite alternate;
   }
 
@@ -265,13 +277,15 @@ const currentYear = 2026;
       rgba(0, 0, 0, 0) 100%
     );
 
-    transition: letter-spacing 0.5s cubic-bezier(0.16, 1, 0.3, 1), filter 0.5s ease;
+    transition:
+      letter-spacing 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+      filter 0.5s ease;
   }
 
   :root[data-theme="dark"] .footer-watermark-text {
     background: linear-gradient(
       180deg,
-      #FFFFFF 0%,
+      #ffffff 0%,
       rgba(242, 242, 247, 0.95) 30%,
       rgba(242, 242, 247, 0.35) 70%,
       rgba(242, 242, 247, 0.04) 95%,
@@ -291,7 +305,8 @@ const currentYear = 2026;
   }
 
   @keyframes watermark-float {
-    0%, 100% {
+    0%,
+    100% {
       transform: translateY(0);
     }
     50% {
