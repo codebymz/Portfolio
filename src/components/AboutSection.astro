@@ -5,10 +5,29 @@
   <div class="site-container">
     <div class="about-inner">
       <h2 id="about-heading" class="about-heading">About</h2>
+
       <div class="about-body">
-        <p>I&rsquo;m Zain, a full-stack developer from Faisalabad, Pakistan. I build web apps with Next.js, React and FastAPI, and I use AI tools to work faster while I handle the design, architecture and debugging myself.</p>
-        <p>So far I&rsquo;ve built a school management portal, an AI paper generator for students, a QR ordering system for a restaurant, and a few tools of my own. I also run MZ Nexora, a small digital agency, and I&rsquo;m studying AI and Data Science at SMIT.</p>
-        <p>I&rsquo;m open to internships, freelance work and remote roles.</p>
+        <!-- Profile photo column -->
+        <div class="about-photo-wrap">
+          <div class="about-photo-card">
+            <img
+              src="/about-photo.jpg"
+              alt="Muhammad Zain Ul Abdin – portrait"
+              class="about-photo-img"
+              loading="lazy"
+              width="768"
+              height="1024"
+            />
+            <div class="photo-sheen" aria-hidden="true"></div>
+          </div>
+        </div>
+
+        <!-- Text column -->
+        <div class="about-text">
+          <p>I'm Zain, a full-stack developer from Faisalabad, Pakistan. I build web apps with Next.js, React and FastAPI, and I use AI tools to work faster while I handle the design, architecture and debugging myself.</p>
+          <p>So far I've built a school management portal, an AI paper generator for students, a QR ordering system for a restaurant, and a few tools of my own. I also run MZ Nexora, a small digital agency, and I'm studying AI and Data Science at SMIT.</p>
+          <p>I'm open to internships, freelance work and remote roles.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -22,19 +41,169 @@
   }
 
   .about-inner {
-    max-width: var(--text-column-max-w);
+    max-width: var(--container-max-w);
   }
 
   .about-heading {
-    margin-bottom: var(--space-32);
+    margin-bottom: var(--space-48);
   }
 
-  .about-body p {
+  /* Two-column layout: photo + text */
+  .about-body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-48);
+    align-items: flex-start;
+  }
+
+  @media (min-width: 640px) {
+    .about-body {
+      flex-direction: row;
+      align-items: flex-start;
+      gap: clamp(36px, 5vw, 64px);
+    }
+  }
+
+  /* ── Photo card ── */
+  .about-photo-wrap {
+    flex-shrink: 0;
+    width: clamp(160px, 26vw, 240px);
+    align-self: flex-start;
+  }
+
+  .about-photo-card {
+    position: relative;
+    width: 100%;
+    border-radius: var(--radius-media);
+    overflow: hidden;
+    cursor: default;
+
+    /* Theme-aware background: off-white (light) / dark gray (dark) */
+    background-color: #E8E8ED;
+    border: 1px solid var(--border);
+
+    /* Ambient float */
+    animation: about-float 7s ease-in-out infinite;
+
+    /* Hover lift */
+    transition:
+      transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+      box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+      border-color 0.3s ease;
+
+    box-shadow:
+      0 8px 24px -6px rgba(0, 0, 0, 0.08),
+      0 0 20px -5px rgba(0, 102, 214, 0.10);
+  }
+
+  :root[data-theme="dark"] .about-photo-card {
+    background-color: #2C2C2E;
+    box-shadow:
+      0 12px 36px -10px rgba(0, 0, 0, 0.55),
+      0 0 25px -4px rgba(10, 132, 255, 0.18);
+  }
+
+  .about-photo-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    border-color: rgba(0, 102, 214, 0.38);
+    box-shadow:
+      0 20px 45px -10px rgba(0, 102, 214, 0.22),
+      0 0 30px -2px rgba(0, 180, 255, 0.22);
+    animation-play-state: paused;
+  }
+
+  :root[data-theme="dark"] .about-photo-card:hover {
+    border-color: rgba(10, 132, 255, 0.55);
+    box-shadow:
+      0 24px 50px -10px rgba(0, 0, 0, 0.7),
+      0 0 35px 2px rgba(10, 132, 255, 0.38);
+  }
+
+  /* Photo image – grayscale by default, color on hover */
+  .about-photo-img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+
+    filter: grayscale(100%) contrast(1.05);
+    transition:
+      filter 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .about-photo-card:hover .about-photo-img {
+    filter: grayscale(0%) contrast(1);
+    transform: scale(1.04);
+  }
+
+  /* Sheen sweep on hover */
+  .photo-sheen {
+    position: absolute;
+    inset: 0;
+    top: 0;
+    left: -120%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.22),
+      transparent
+    );
+    transform: skewX(-20deg);
+    pointer-events: none;
+    transition: left 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  :root[data-theme="dark"] .photo-sheen {
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.14),
+      transparent
+    );
+  }
+
+  .about-photo-card:hover .photo-sheen {
+    left: 150%;
+  }
+
+  /* Float keyframe */
+  @keyframes about-float {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-6px); }
+  }
+
+  /* ── Text column ── */
+  .about-text {
+    flex: 1;
+    min-width: 0;
+    max-width: var(--text-column-max-w);
+  }
+
+  .about-text p {
     color: var(--text);
     margin-bottom: var(--space-24);
   }
 
-  .about-body p:last-child {
+  .about-text p:last-child {
     margin-bottom: 0;
+  }
+
+  /* Accessibility: respect reduced-motion */
+  @media (prefers-reduced-motion: reduce) {
+    .about-photo-card {
+      animation: none;
+    }
+    .about-photo-card,
+    .about-photo-img,
+    .photo-sheen {
+      transition: none;
+      transform: none !important;
+    }
+    .about-photo-card:hover .about-photo-img {
+      filter: grayscale(0%) contrast(1);
+    }
   }
 </style>
