@@ -38,7 +38,7 @@ export const featuredProjects: FeaturedProject[] = [
     stack: ['React', 'Next.js', 'Python', 'FastAPI', 'RAG', 'Gemini API', 'Groq API'],
     liveUrl: 'https://paper-genai.vercel.app',
     githubUrl: 'https://github.com/codebymz/paper-genai',
-    screenshot: 'TODO',
+    screenshot: '/projects/paper-genai.jpg',
   },
   {
     title: 'HBS Admin Portal',
@@ -52,7 +52,7 @@ export const featuredProjects: FeaturedProject[] = [
     ],
     stack: ['React', 'Next.js', 'Python', 'FastAPI', 'Clerk'],
     isPrivateRepo: true,
-    screenshot: 'TODO',
+    screenshot: '/projects/hbs-admin-portal.png',
   },
   {
     title: 'Spice Garden',

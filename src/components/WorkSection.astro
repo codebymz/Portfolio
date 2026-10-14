@@ -31,13 +31,16 @@ import { featuredProjects, otherProjects } from '../data/projects';
                   ></video>
                 </div>
               ) : project.screenshot && project.screenshot !== 'TODO' ? (
-                <div class="screenshot-placeholder media-has-content">
-                  <img
-                    src={project.screenshot}
-                    alt={`${project.title} screenshot`}
-                    class="project-media-img"
-                    loading="lazy"
-                  />
+                <div class="screenshot-placeholder media-has-content media-animated">
+                  <a href={`/projects/${project.slug}`} class="project-media-link" aria-label={`View ${project.title} details`}>
+                    <img
+                      src={project.screenshot}
+                      alt={`${project.title} screenshot`}
+                      class="project-media-img"
+                      loading="lazy"
+                    />
+                    <div class="media-sheen" aria-hidden="true"></div>
+                  </a>
                 </div>
               ) : (
                 <div class="screenshot-placeholder" aria-label={`${project.title} screenshot placeholder`}>
@@ -241,10 +244,41 @@ import { featuredProjects, otherProjects } from '../data/projects';
     text-align: center;
     overflow: hidden;
     position: relative;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
   }
 
   .media-has-content {
     padding: 0;
+  }
+
+  .media-animated {
+    animation: media-float 7s ease-in-out infinite;
+    box-shadow: 0 8px 24px -6px rgba(0, 0, 0, 0.08), 0 0 20px -5px rgba(0, 102, 214, 0.12);
+  }
+
+  :root[data-theme="dark"] .media-animated {
+    box-shadow: 0 12px 36px -10px rgba(0, 0, 0, 0.5), 0 0 25px -4px rgba(10, 132, 255, 0.22);
+  }
+
+  .screenshot-placeholder.media-has-content:hover {
+    transform: translateY(-8px) scale(1.015);
+    border-color: rgba(0, 102, 214, 0.4);
+    box-shadow: 0 20px 45px -10px rgba(0, 102, 214, 0.22), 0 0 30px -2px rgba(0, 180, 255, 0.25);
+  }
+
+  :root[data-theme="dark"] .screenshot-placeholder.media-has-content:hover {
+    border-color: rgba(10, 132, 255, 0.6);
+    box-shadow: 0 24px 50px -10px rgba(0, 0, 0, 0.7), 0 0 35px 2px rgba(10, 132, 255, 0.4);
+  }
+
+  .project-media-link {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+    cursor: pointer;
   }
 
   .project-media-video,
@@ -253,6 +287,68 @@ import { featuredProjects, otherProjects } from '../data/projects';
     height: 100%;
     object-fit: cover;
     display: block;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .project-media-img {
+    filter: grayscale(100%) contrast(1.02);
+  }
+
+  .screenshot-placeholder.media-has-content:hover .project-media-img,
+  .screenshot-placeholder.media-has-content:focus-within .project-media-img {
+    filter: grayscale(0%) contrast(1);
+    transform: scale(1.045);
+  }
+
+  .media-sheen {
+    position: absolute;
+    top: 0;
+    left: -120%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.24),
+      transparent
+    );
+    transform: skewX(-20deg);
+    pointer-events: none;
+    transition: left 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  :root[data-theme="dark"] .media-sheen {
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.16),
+      transparent
+    );
+  }
+
+  .screenshot-placeholder.media-has-content:hover .media-sheen {
+    left: 150%;
+  }
+
+  @keyframes media-float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-6px);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .media-animated {
+      animation: none;
+    }
+    .screenshot-placeholder,
+    .project-media-img,
+    .media-sheen {
+      transition: none;
+      transform: none !important;
+    }
   }
 
   .placeholder-title {
