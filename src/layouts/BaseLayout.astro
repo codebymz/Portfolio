@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
+import FloatingCTA from '../components/FloatingCTA.astro';
 
 interface Props {
   title?: string;
@@ -84,6 +85,7 @@ const {
       <slot />
     </main>
     <Footer />
+    <FloatingCTA />
 
     <script>
       import { setupThemeControls } from '../scripts/theme';
