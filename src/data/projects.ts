@@ -94,7 +94,7 @@ export const featuredProjects: FeaturedProject[] = [
     stack: ['React', 'Python', 'FastAPI'],
     liveUrl: 'https://speed-lab.vercel.app',
     githubUrl: 'https://github.com/codebymz/Speed-Lab',
-    screenshot: 'TODO',
+    screenshot: '/projects/speed-lab.png',
   },
   {
     title: 'MZ Nexora',
@@ -109,7 +109,7 @@ export const featuredProjects: FeaturedProject[] = [
     stack: ['React', 'Next.js', 'FastAPI', 'AI Chatbot', 'Tailwind CSS'],
     liveUrl: 'https://mznexora.vercel.app',
     githubUrl: 'https://github.com/codebymz/mznexora',
-    screenshot: 'TODO',
+    screenshot: '/projects/mznexora.png',
   },
 ];
 
