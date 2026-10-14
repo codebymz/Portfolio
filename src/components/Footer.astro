@@ -61,15 +61,24 @@ const currentYear = 2026;
       </p>
     </div>
   </div>
+
+  <div class="footer-watermark-wrap" aria-hidden="true">
+    <div class="footer-watermark-glow"></div>
+    <div class="footer-watermark-inner">
+      <span class="footer-watermark-text">M ZAIN UL ABDIN</span>
+    </div>
+  </div>
 </footer>
 
 <style>
   .site-footer {
     border-top: 1px solid var(--border);
     padding-top: 48px;
-    padding-bottom: 48px;
+    padding-bottom: 8px;
     margin-top: 96px;
     background-color: var(--bg);
+    overflow: hidden;
+    position: relative;
   }
 
   .footer-container {
@@ -151,5 +160,166 @@ const currentYear = 2026;
     font-size: var(--font-size-small);
     color: var(--text-muted);
     margin: 0;
+  }
+
+  /* Large watermark typography at the very end of footer */
+  .footer-watermark-wrap {
+    position: relative;
+    width: 100%;
+    margin-top: clamp(28px, 4vw, 48px);
+    padding-top: 16px;
+    padding-bottom: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    user-select: none;
+    cursor: default;
+  }
+
+  .footer-watermark-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: min(850px, 90%);
+    height: 120px;
+    background: radial-gradient(
+      ellipse at center,
+      rgba(0, 102, 214, 0.16) 0%,
+      rgba(171, 104, 255, 0.08) 50%,
+      transparent 75%
+    );
+    filter: blur(40px);
+    pointer-events: none;
+    opacity: 0.6;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    animation: watermark-pulse 6s ease-in-out infinite alternate;
+  }
+
+  :root[data-theme="dark"] .footer-watermark-glow {
+    background: radial-gradient(
+      ellipse at center,
+      rgba(10, 132, 255, 0.28) 0%,
+      rgba(166, 122, 255, 0.15) 50%,
+      transparent 75%
+    );
+    opacity: 0.8;
+  }
+
+  .footer-watermark-inner {
+    position: relative;
+    display: inline-block;
+    max-width: 100%;
+    animation: watermark-float 7s ease-in-out infinite;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .footer-watermark-wrap:hover .footer-watermark-inner {
+    transform: translateY(-4px) scale(1.015);
+  }
+
+  .footer-watermark-wrap:hover .footer-watermark-glow {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.15);
+  }
+
+  .footer-watermark-text {
+    display: block;
+    font-family: var(--font-family);
+    font-size: clamp(2.3rem, 8.2vw, 7.8rem);
+    font-weight: 900;
+    line-height: 0.88;
+    letter-spacing: clamp(0.04em, 1.1vw, 0.14em);
+    text-transform: uppercase;
+    text-align: center;
+    white-space: nowrap;
+    margin: 0;
+    padding: 0 16px;
+
+    /* Top is sharp & clear (saf); bottom smoothly fades out (fady) */
+    background: linear-gradient(
+      180deg,
+      var(--text) 0%,
+      var(--text) 32%,
+      rgba(28, 28, 30, 0.42) 70%,
+      rgba(28, 28, 30, 0.04) 95%,
+      transparent 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 1) 0%,
+      rgba(0, 0, 0, 1) 32%,
+      rgba(0, 0, 0, 0.42) 75%,
+      rgba(0, 0, 0, 0) 100%
+    );
+    mask-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 1) 0%,
+      rgba(0, 0, 0, 1) 32%,
+      rgba(0, 0, 0, 0.42) 75%,
+      rgba(0, 0, 0, 0) 100%
+    );
+
+    transition: letter-spacing 0.5s cubic-bezier(0.16, 1, 0.3, 1), filter 0.5s ease;
+  }
+
+  :root[data-theme="dark"] .footer-watermark-text {
+    background: linear-gradient(
+      180deg,
+      #FFFFFF 0%,
+      rgba(242, 242, 247, 0.95) 30%,
+      rgba(242, 242, 247, 0.35) 70%,
+      rgba(242, 242, 247, 0.04) 95%,
+      transparent 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+
+  .footer-watermark-wrap:hover .footer-watermark-text {
+    letter-spacing: clamp(0.06em, 1.3vw, 0.17em);
+    filter: drop-shadow(0 4px 20px rgba(0, 102, 214, 0.28));
+  }
+
+  :root[data-theme="dark"] .footer-watermark-wrap:hover .footer-watermark-text {
+    filter: drop-shadow(0 4px 25px rgba(10, 132, 255, 0.45));
+  }
+
+  @keyframes watermark-float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-6px);
+    }
+  }
+
+  @keyframes watermark-pulse {
+    0% {
+      transform: translate(-50%, -50%) scale(0.95);
+      opacity: 0.5;
+    }
+    100% {
+      transform: translate(-50%, -50%) scale(1.05);
+      opacity: 0.75;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .footer-watermark-inner,
+    .footer-watermark-glow {
+      animation: none;
+    }
+    .footer-watermark-wrap:hover .footer-watermark-inner,
+    .footer-watermark-wrap:hover .footer-watermark-glow,
+    .footer-watermark-text {
+      transition: none;
+      transform: none !important;
+    }
   }
 </style>
