@@ -96,7 +96,7 @@ Fields marked `TODO` need the owner. Do not fill them in.
 - What it does:
   - Converts files from one format to another, for example PPT to PDF, PDF to Excel, Excel to Word
 - Stack: React, Python
-- Status: coming soon. Show a "Coming soon" label instead of a live link.
+- Live: https://zapr-converter.vercel.app/
 - GitHub: https://github.com/codebymz/zapr
 - Screenshot: /projects/zapr.png
 

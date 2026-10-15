@@ -78,7 +78,7 @@ export const featuredProjects: FeaturedProject[] = [
       'Instant download of converted files',
     ],
     stack: ['React', 'Python', 'FastAPI'],
-    isComingSoon: true,
+    liveUrl: 'https://zapr-converter.vercel.app/',
     githubUrl: 'https://github.com/codebymz/zapr',
     screenshot: '/projects/zapr.png',
     images: ['/projects/zapr.png', '/projects/zapr-preview.png'],
