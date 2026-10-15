@@ -98,7 +98,7 @@ Fields marked `TODO` need the owner. Do not fill them in.
 - Stack: React, Python
 - Status: coming soon. Show a "Coming soon" label instead of a live link.
 - GitHub: https://github.com/codebymz/zapr
-- Screenshot: TODO
+- Screenshot: /projects/zapr.png
 
 ### 5.5 Other projects (list, no detail pages)
 

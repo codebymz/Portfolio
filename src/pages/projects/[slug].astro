@@ -68,6 +68,22 @@ const pageCanonical = `https://mzainulabdin.xyz/projects/${project.slug}`;
           <span class="placeholder-label">Preview media (Video or Screenshot)</span>
         </div>
       )}
+
+      {project.images && project.images.length > 1 && (
+        <div class="project-gallery" aria-label="Project screenshot gallery">
+          {project.images.slice(1).map((imgUrl, idx) => (
+            <div class="project-media-wrapper media-animated gallery-item">
+              <img
+                src={imgUrl}
+                alt={`${project.title} screenshot ${idx + 2}`}
+                class="project-detail-img"
+                loading="lazy"
+              />
+              <div class="media-sheen" aria-hidden="true"></div>
+            </div>
+          ))}
+        </div>
+      )}
     </section>
 
     <!-- What it does Section -->
@@ -179,6 +195,17 @@ const pageCanonical = `https://mzainulabdin.xyz/projects/${project.slug}`;
   /* Screenshot */
   .project-media {
     margin-bottom: var(--space-64);
+  }
+
+  .project-gallery {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-32);
+    margin-top: var(--space-32);
+  }
+
+  .gallery-item {
+    animation-delay: -3.5s;
   }
 
   .project-media-wrapper {

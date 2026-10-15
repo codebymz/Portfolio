@@ -80,7 +80,8 @@ export const featuredProjects: FeaturedProject[] = [
     stack: ['React', 'Python', 'FastAPI'],
     isComingSoon: true,
     githubUrl: 'https://github.com/codebymz/zapr',
-    screenshot: 'TODO',
+    screenshot: '/projects/zapr.png',
+    images: ['/projects/zapr.png', '/projects/zapr-preview.png'],
   },
   {
     title: 'Speed Lab',
