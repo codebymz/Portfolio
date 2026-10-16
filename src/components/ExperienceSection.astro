@@ -1,64 +1,93 @@
 ---
 // Experience entries – work and internships, newest first.
-// Arabic teacher is now shown per owner decision (2026-10-05).
-// ICS moved to EducationSection.
+// Arabic teacher is shown per owner decision (2026-10-05).
 const entries = [
   {
     title: "Founder and Full-Stack Developer",
     place: "MZ Nexora",
-    period: "August 2026 — present",
+    period: "August 2026 — Present",
     location: "Faisalabad, Pakistan",
-    badge: null,
+    badge: "Founder",
+    isCurrent: true,
+    note: "Leading digital solutions, client web apps, and AI chatbot integrations.",
   },
   {
     title: "Digital Marketing intern",
     place: "SDI Welfare",
     period: "August 2026 — October 2026",
     location: null,
-    badge: null,
-    note: null,
+    badge: "Internship",
+    isCurrent: false,
+    note: "Completed hands-on digital marketing campaigns and community outreach.",
   },
   {
     title: "Arabic teacher",
     place: "Alliance Public School",
-    period: "~1 year", // exact start/end dates: TODO (owner to confirm)
+    period: "~1 year",
     location: "Faisalabad, Pakistan",
     badge: null,
+    isCurrent: false,
+    note: "Instructed students in language fundamentals, comprehension, and grammar.",
   },
   {
     title: "AI and Data Science",
     place: "Saylani Mass IT Training (SMIT)",
     period: "November 2025 — November 2026",
     location: null,
-    badge: null,
+    badge: "Internship",
+    isCurrent: false,
+    note: "Hands-on engineering in Python, AI pipelines, machine learning, and data modeling.",
   },
 ];
 ---
 
 <section id="experience" aria-labelledby="experience-heading">
   <div class="site-container">
-    <h2 id="experience-heading" class="experience-heading">Experience</h2>
+    <div class="experience-header">
+      <h2 id="experience-heading" class="experience-heading">Experience</h2>
+    </div>
+
     <ol class="timeline" role="list">
       {entries.map((entry) => (
-        <li class="timeline-entry">
-          <div class="timeline-marker" aria-hidden="true"></div>
+        <li class:list={["timeline-entry", entry.isCurrent && "is-active-entry"]}>
+          <!-- Marker column -->
+          <div class="timeline-marker-wrap">
+            {entry.isCurrent ? (
+              <div class="current-marker" aria-label="Currently active role">
+                <span class="marker-dot"></span>
+                <span class="marker-ping" aria-hidden="true"></span>
+              </div>
+            ) : (
+              <div class="timeline-marker" aria-hidden="true"></div>
+            )}
+          </div>
+
+          <!-- Body column -->
           <div class="timeline-body">
-            <div class="entry-header">
-              <p class="entry-title">{entry.title}</p>
-              <p class="entry-place">{entry.place}</p>
+            <div class="entry-top">
+              <div class="entry-title-wrap">
+                <h3 class="entry-title">{entry.title}</h3>
+                <p class="entry-place-row">
+                  <span class="entry-place">{entry.place}</span>
+                  {entry.location && (
+                    <span class="entry-location">
+                      <span class="sep" aria-hidden="true">·</span>
+                      {entry.location}
+                    </span>
+                  )}
+                </p>
+              </div>
+
+              <div class="entry-meta">
+                <span class:list={["period-badge", entry.isCurrent && "is-current-period"]}>
+                  {entry.period}
+                </span>
+                {entry.badge && (
+                  <span class="entry-badge">{entry.badge}</span>
+                )}
+              </div>
             </div>
-            <div class="entry-meta">
-              {entry.period && entry.location ? (
-                <span class="entry-period-location">{entry.period} · {entry.location}</span>
-              ) : entry.period ? (
-                <span class="entry-period-location">{entry.period}</span>
-              ) : entry.location ? (
-                <span class="entry-period-location">{entry.location}</span>
-              ) : null}
-              {entry.badge && (
-                <span class="entry-badge">{entry.badge}</span>
-              )}
-            </div>
+
             {entry.note && (
               <p class="entry-note">{entry.note}</p>
             )}
@@ -76,107 +105,236 @@ const entries = [
     border-bottom: 1px solid var(--border);
   }
 
-  .experience-heading {
+  .experience-header {
     margin-bottom: var(--space-48);
   }
 
+  .experience-heading {
+    margin: 0;
+  }
+
+  /* Timeline list */
   .timeline {
     list-style: none;
     margin: 0;
     padding: 0;
     position: relative;
+    max-width: var(--container-max-w);
   }
 
-  /* Vertical line */
+  /* Vertical timeline line */
   .timeline::before {
     content: "";
     position: absolute;
-    top: 8px;
-    bottom: 8px;
-    left: 7px;
-    width: 1px;
-    background-color: var(--border);
+    top: 14px;
+    bottom: 24px;
+    left: 8px;
+    width: 2px;
+    background: linear-gradient(
+      to bottom,
+      var(--accent) 0%,
+      var(--border) 40%,
+      var(--border) 100%
+    );
   }
 
   .timeline-entry {
     display: flex;
     gap: var(--space-24);
     position: relative;
-    padding-bottom: 40px;
+    padding-bottom: var(--space-48);
+    transition: all 200ms ease;
   }
 
   .timeline-entry:last-child {
     padding-bottom: 0;
   }
 
-  .timeline-marker {
+  /* Marker Column */
+  .timeline-marker-wrap {
     flex-shrink: 0;
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
-    border: 2px solid var(--accent);
-    background-color: var(--bg);
-    margin-top: 3px;
+    width: 18px;
+    display: flex;
+    justify-content: center;
+    padding-top: 4px;
     position: relative;
-    z-index: 1;
+    z-index: 2;
   }
 
+  .timeline-marker {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid var(--border);
+    background-color: var(--bg);
+    transition: border-color 200ms ease, background-color 200ms ease;
+  }
+
+  .timeline-entry:hover .timeline-marker {
+    border-color: var(--accent);
+    background-color: var(--accent);
+  }
+
+  /* Current Role Pulse Marker */
+  .current-marker {
+    position: relative;
+    width: 14px;
+    height: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .marker-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #10B981;
+    z-index: 2;
+  }
+
+  .marker-ping {
+    position: absolute;
+    inset: -3px;
+    border-radius: 50%;
+    border: 2px solid #10B981;
+    animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+    opacity: 0.75;
+  }
+
+  @keyframes ping {
+    75%, 100% {
+      transform: scale(2);
+      opacity: 0;
+    }
+  }
+
+  /* Body Column */
   .timeline-body {
+    flex: 1;
     display: flex;
     flex-direction: column;
-    gap: var(--space-4);
-    padding-bottom: var(--space-8);
+    gap: var(--space-8);
+    padding: var(--space-12) var(--space-16);
+    border-radius: var(--radius-tag);
+    border: 1px solid transparent;
+    transition: background-color 200ms ease, border-color 200ms ease, transform 200ms ease;
+    margin-top: -8px;
   }
 
-  .entry-header {
+  .timeline-entry:hover .timeline-body {
+    background: var(--surface);
+    border-color: var(--border);
+    transform: translateX(4px);
+  }
+
+  /* Top flex layout (Title + Meta) */
+  .entry-top {
     display: flex;
     flex-direction: column;
-    gap: var(--space-4);
+    gap: var(--space-8);
+  }
+
+  @media (min-width: 640px) {
+    .entry-top {
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: var(--space-24);
+    }
+  }
+
+  .entry-title-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
   }
 
   .entry-title {
-    font-size: var(--font-size-body);
+    font-size: 18px;
     font-weight: 600;
     color: var(--text);
     margin: 0;
-    max-width: none;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+  }
+
+  .entry-place-row {
+    font-size: var(--font-size-small);
+    color: var(--text-muted);
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
   }
 
   .entry-place {
-    font-size: var(--font-size-body);
-    color: var(--text-muted);
-    margin: 0;
-    max-width: none;
+    font-weight: 500;
   }
 
+  .entry-location {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .sep {
+    color: var(--border);
+  }
+
+  /* Meta & Badges */
   .entry-meta {
     display: flex;
-    flex-wrap: wrap;
     align-items: center;
     gap: var(--space-8);
-    margin-top: var(--space-4);
+    flex-wrap: wrap;
+    flex-shrink: 0;
   }
 
-  .entry-period-location {
-    font-size: var(--font-size-small);
-    color: var(--text-muted);
+  .period-badge {
+    font-size: 12px;
     font-weight: 500;
+    color: var(--text-muted);
+    background: var(--bg);
+    border: 1px solid var(--border);
+    padding: 3px 10px;
+    border-radius: var(--radius-pill);
+    white-space: nowrap;
+  }
+
+  .period-badge.is-current-period {
+    color: #10B981;
+    border-color: rgba(16, 185, 129, 0.35);
+    background: rgba(16, 185, 129, 0.08);
+    font-weight: 600;
   }
 
   .entry-badge {
-    font-size: var(--font-size-small);
+    font-size: 11px;
     font-weight: 500;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-tag);
+    color: var(--accent);
+    background: rgba(10, 132, 255, 0.08);
+    border: 1px solid rgba(10, 132, 255, 0.25);
     padding: 2px 8px;
-    color: var(--text-muted);
-    line-height: var(--line-height-small);
+    border-radius: var(--radius-pill);
+    white-space: nowrap;
   }
 
   .entry-note {
     font-size: var(--font-size-small);
     color: var(--text-muted);
-    margin: var(--space-4) 0 0;
-    max-width: 55ch;
+    line-height: var(--line-height-small);
+    margin: 0;
+    max-width: 65ch;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .marker-ping {
+      animation: none !important;
+    }
+    .timeline-entry:hover .timeline-body {
+      transform: none !important;
+    }
   }
 </style>

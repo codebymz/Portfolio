@@ -1,46 +1,124 @@
 ---
-const skillGroups = [
+interface SkillItem {
+  name: string;
+}
+
+interface SkillDomain {
+  id: string;
+  category: string;
+  label: string;
+  badge: string;
+  skills: SkillItem[];
+}
+
+const skillDomains: SkillDomain[] = [
   {
+    id: "frontend",
+    category: "frontend",
     label: "Frontend",
-    skills: ["React", "Next.js", "TypeScript", "JavaScript", "HTML", "CSS", "Tailwind CSS"],
+    badge: "UI & Client",
+    skills: [
+      { name: "React" },
+      { name: "Next.js" },
+      { name: "TypeScript" },
+      { name: "JavaScript" },
+      { name: "HTML" },
+      { name: "CSS" },
+      { name: "Tailwind CSS" },
+    ],
   },
   {
+    id: "backend",
+    category: "backend",
     label: "Backend",
-    skills: ["Python", "FastAPI", "REST APIs", "SQLAlchemy", "SQL"],
+    badge: "APIs & Logic",
+    skills: [
+      { name: "Python" },
+      { name: "FastAPI" },
+      { name: "REST APIs" },
+      { name: "SQLAlchemy" },
+      { name: "SQL" },
+    ],
   },
   {
-    label: "Database and vector",
-    skills: ["Neon (PostgreSQL)", "Pinecone"],
-  },
-  {
+    id: "ai",
+    category: "ai",
     label: "AI",
-    skills: ["RAG", "Embeddings", "Gemini API", "Groq API"],
+    badge: "LLMs & Vectors",
+    skills: [
+      { name: "RAG" },
+      { name: "Embeddings" },
+      { name: "Gemini API" },
+      { name: "Groq API" },
+    ],
   },
   {
+    id: "database",
+    category: "database",
+    label: "Database and vector",
+    badge: "Storage & Search",
+    skills: [
+      { name: "Neon (PostgreSQL)" },
+      { name: "Pinecone" },
+    ],
+  },
+  {
+    id: "automation",
+    category: "automation",
     label: "Automation",
-    skills: ["n8n"],
+    badge: "Pipelines",
+    skills: [
+      { name: "n8n" },
+    ],
   },
   {
+    id: "tools",
+    category: "tools",
     label: "Tools",
-    skills: ["Git", "GitHub", "Vercel", "Clerk"],
+    badge: "DevOps & Auth",
+    skills: [
+      { name: "Git" },
+      { name: "GitHub" },
+      { name: "Vercel" },
+      { name: "Clerk" },
+    ],
   },
   {
+    id: "ai-tools",
+    category: "tools",
     label: "AI tools",
-    skills: ["Claude", "Antigravity IDE"],
+    badge: "Workflows",
+    skills: [
+      { name: "Claude" },
+      { name: "Antigravity IDE" },
+    ],
   },
 ];
 ---
 
 <section id="skills" aria-labelledby="skills-heading">
   <div class="site-container">
-    <h2 id="skills-heading" class="skills-heading">Skills</h2>
-    <div class="skill-groups">
-      {skillGroups.map((group) => (
-        <div class="skill-group">
-          <h3 class="group-label">{group.label}</h3>
-          <ul class="tag-list" role="list">
-            {group.skills.map((skill) => (
-              <li class="tag">{skill}</li>
+    <div class="skills-header">
+      <h2 id="skills-heading" class="skills-heading">Skills</h2>
+    </div>
+
+    <!-- Editorial Minimalist Registry -->
+    <div class="skills-table" role="region" aria-label="Skills by domain">
+      {skillDomains.map((domain) => (
+        <div class="skill-row" data-domain={domain.id}>
+          <div class="domain-meta">
+            <span class="domain-dot" aria-hidden="true"></span>
+            <div class="domain-info">
+              <h3 class="domain-label">{domain.label}</h3>
+              <span class="domain-badge">{domain.badge}</span>
+            </div>
+          </div>
+
+          <ul class="skills-pills" role="list">
+            {domain.skills.map((skill) => (
+              <li class="skill-item">
+                <span class="skill-item-inner">{skill.name}</span>
+              </li>
             ))}
           </ul>
         </div>
@@ -56,48 +134,151 @@ const skillGroups = [
     border-bottom: 1px solid var(--border);
   }
 
-  .skills-heading {
+  .skills-header {
     margin-bottom: var(--space-48);
   }
 
-  .skill-groups {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-32);
+  .skills-heading {
+    margin: 0;
   }
 
-  .skill-group {
+  /* Editorial Table Layout */
+  .skills-table {
     display: flex;
     flex-direction: column;
-    gap: var(--space-12);
+    border-top: 1px solid var(--border);
+  }
+
+  .skill-row {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-16);
+    padding: var(--space-24) 0;
+    border-bottom: 1px solid var(--border);
+    transition: background-color 200ms ease, padding-left 200ms ease;
+    position: relative;
   }
 
   @media (min-width: 640px) {
-    .skill-group {
+    .skill-row {
       flex-direction: row;
-      align-items: baseline;
-      gap: var(--space-24);
+      align-items: center;
+      gap: var(--space-48);
+      padding: var(--space-24) var(--space-12);
+      border-radius: var(--radius-tag);
+    }
+
+    .skill-row:hover {
+      background: var(--surface);
+      padding-left: var(--space-16);
     }
   }
 
-  .group-label {
-    font-size: var(--font-size-small);
-    font-weight: 600;
-    color: var(--text-muted);
-    line-height: var(--line-height-small);
-    letter-spacing: 0;
-    white-space: nowrap;
+  .domain-meta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-12);
+    min-width: 220px;
     flex-shrink: 0;
-    min-width: 160px;
-    margin: 0;
   }
 
-  .tag-list {
+  .domain-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--border);
+    transition: background-color 200ms ease, transform 200ms ease;
+    flex-shrink: 0;
+  }
+
+  .skill-row:hover .domain-dot {
+    background-color: var(--accent);
+    transform: scale(1.4);
+    box-shadow: 0 0 8px var(--accent);
+  }
+
+  .domain-info {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-8);
+  }
+
+  .domain-label {
+    font-size: var(--font-size-small);
+    font-weight: 600;
+    color: var(--text);
+    margin: 0;
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+  }
+
+  .domain-badge {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--text-muted);
+    background: var(--bg);
+    border: 1px solid var(--border);
+    padding: 1px 7px;
+    border-radius: var(--radius-pill);
+    white-space: nowrap;
+  }
+
+  /* Pills List */
+  .skills-pills {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--space-8);
+    gap: 8px;
     list-style: none;
     margin: 0;
     padding: 0;
+    flex: 1;
+  }
+
+  .skill-item {
+    display: inline-flex;
+  }
+
+  .skill-item-inner {
+    font-size: var(--font-size-small);
+    font-weight: 500;
+    color: var(--text);
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-tag);
+    padding: 5px 12px;
+    line-height: var(--line-height-small);
+    transition: all 180ms ease;
+    user-select: none;
+    cursor: default;
+  }
+
+  .skill-row:hover .skill-item-inner {
+    background: var(--bg);
+    border-color: rgba(60, 60, 67, 0.25);
+  }
+
+  :root[data-theme="dark"] .skill-row:hover .skill-item-inner {
+    border-color: rgba(255, 255, 255, 0.22);
+  }
+
+  .skill-item-inner:hover {
+    color: var(--accent) !important;
+    border-color: var(--accent) !important;
+    background: var(--surface) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  }
+
+  :root[data-theme="dark"] .skill-item-inner:hover {
+    box-shadow: 0 4px 14px rgba(10, 132, 255, 0.18);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .skill-row,
+    .domain-dot,
+    .skill-item-inner {
+      transition: none !important;
+      transform: none !important;
+    }
   }
 </style>
